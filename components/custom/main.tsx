@@ -2,8 +2,6 @@
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
-import { LayoutTextFlip } from "../ui/layout-text-flip";
-import Link from "next/link";
 
 const main = () => {
     const words = [
