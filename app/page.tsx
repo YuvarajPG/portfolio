@@ -1,13 +1,11 @@
-import Dummy from "@/components/dummy";
-import Main from "../components/main";
-
+"use client";
+import Dummy from "@/components/custom/dummy";
+import Main from "@/components/custom/main";
 const page = () => {
-    return (
-        <div className="bg-transparent container">
-            <Main/>
-            <Dummy/>
-        </div>
-    );
+    return <div className="overflow-hidden max-w-svw">
+        <Main />
+        <Dummy />
+    </div>;
 };
 
 export default page;
