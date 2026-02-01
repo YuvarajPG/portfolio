@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/ui/TextType.jsx", "app/global-not-found.jsx", "components/ui/Card.tsx"  ],
+, "components/ui/TextType.jsx", "app/global-not-found.jsx", "components/ui/Card.jsx"  ],
   "exclude": ["node_modules"]
 }

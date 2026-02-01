@@ -4,19 +4,14 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils"; // Assuming you have a utility for class names
 
 // Props interface for type safety and clarity
-interface LinkCardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-    title: string;
-    description: string;
-    imageUrl: string;
-    href: string;
-}
 
-const LinkCard = React.forwardRef<HTMLAnchorElement, LinkCardProps>(
-    ({ className, title, description, imageUrl, href, ...props }, ref) => {
-        // Animation variants for framer-motion
-        const cardVariants = {
-            initial: { scale: 1, y: 0 },
-            hover: {
+
+const LinkCard = React.forwardRef((props, ref) => {
+    const { className, title, description, imageUrl, href, ...restProps } = props;
+    // Animation variants for framer-motion
+    const cardVariants = {
+        initial: { scale: 1, y: 0 },
+        hover: {
                 scale: 1.03,
                 y: -5,
                 transition: {
