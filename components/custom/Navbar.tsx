@@ -4,26 +4,30 @@ const Navbar = () => {
     return (
         <>
             <nav className="p-4 backdrop-blur-2xl box-border shadow  border-white/10 dark:border-gray-800">
-                <div className="flex justify-between items-center">
-                    <div className="text-xl font-bold hidden min-[350]:block">
-                        <Link href="/" className="">Portfolio</Link>
+                <div className="max-[200]:block hidden">please use big screen</div>
+                <div className="flex justify-between items-center max-[330]:justify-evenly max-[200]:hidden">
+                    <div className="text-xl font-bold hidden min-[330]:block">
+                        <Link href="/" className="">
+                            Portfolio
+                        </Link>
                     </div>
                     <div className="flex space-x-4">
                         <a
                             href="/"
-                            className="hover:text-gray-500 dark:hover:text-blue-400"
+                            className="hover:text-blue-500"
                         >
                             Home
                         </a>
                         <Link
                             href="/projects"
-                            className="hover:text-gray-500 dark:hover:text-blue-400"
+                            className="hover:text-blue-500"
+                            target="_blank"
                         >
                             Projects
                         </Link>
                         <Link
-                            href="/contact"
-                            className="hover:text-gray-500 dark:hover:text-blue-400"
+                            href=""
+                            className="hover:text-blue-500"
                         >
                             Contact
                         </Link>

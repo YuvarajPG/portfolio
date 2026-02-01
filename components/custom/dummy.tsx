@@ -1,14 +1,11 @@
 "use client";
-import LogoLoop from "./../ui/LogoLoop";
+import LogoLoop from "../ui/LogoLoop";
 
 const Dummy = () => {
     const techLogos = [
         {
             node: (
-                <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-                    className="w-16 flex"
-                />
+                <img src="html5-original-wordmark.svg" className="w-16 flex" />
             ),
             title: "HTML5",
             href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
@@ -72,7 +69,10 @@ const Dummy = () => {
         {
             node: (
                 <div className="w-15 h-16 flex items-center justify-center rounded-md">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width={50}/>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                        width={50}
+                    />
                 </div>
             ),
             title: "Tailwind CSS",
