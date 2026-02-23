@@ -157,3 +157,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+*{
+  scrollbar-width: none;
+  scrollbar-color: var(--color-primary) var(--color-background);
+}

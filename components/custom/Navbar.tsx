@@ -3,7 +3,7 @@ import Link from "next/link";
 const Navbar = () => {
     return (
         <>
-            <nav className="p-4 backdrop-blur-2xl box-border shadow  border-white/10 dark:border-gray-800">
+            <nav className="py-4 px-4 backdrop-blur-2xl box-border shadow  border-white/10 dark:border-gray-800">
                 <div className="max-[200]:block hidden">please use big screen</div>
                 <div className="flex justify-between items-center max-[330]:justify-evenly max-[200]:hidden">
                     <div className="text-xl font-bold hidden min-[330]:block">

@@ -1,33 +1,16 @@
 "use client";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import Link from "next/link";
 import githubLogo from "../../public/github.png";
 import instagramLogo from "../../public/instagram.png";
 import linkedinLogo from "../../public/linkedin.png";
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { SplitText } from "gsap/SplitText";
-import { TextPlugin } from "gsap/TextPlugin";
 import location from "../../public/location.png";
 
-gsap.registerPlugin(
-    useGSAP,
-    ScrollTrigger,
-    ScrollSmoother,
-    ScrollToPlugin,
-    SplitText,
-    TextPlugin,
-);
-
-const main = () => {
+const Main = () => {
     const words = [
-        { text: "Hello! I’m Yuvaraj" },
+        { text: "Hello! I'm Yuvaraj" },
         // { text: "Srimathi, I love you" },
         // { text: "Srimathi, I like you" },
     ];
@@ -102,4 +85,4 @@ const main = () => {
     );
 };
 
-export default main;
+export default Main;
