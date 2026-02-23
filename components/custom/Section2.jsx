@@ -13,7 +13,7 @@ const Section2 = () => {
                 />
                 <CardSection
                     name="Tailwind CSS"
-                    logo="/tailwind CSS.png"
+                    logo="/tailwindCSS.png"
                     className="ps-2 pt-5"
                 />
                 <CardSection
