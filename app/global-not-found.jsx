@@ -15,7 +15,7 @@ const notfound = () => {
                     </FuzzyText>
 
                     <TextType
-                    className="text-white z-99 text-3xl md:text-5xl font-bold mt-4"
+                    className="text-red-600 z-99 text-3xl md:text-5xl font-bold mt-4"
                         text="Page Not Found"
                         typingSpeed={75}
                         pauseDuration={1500}

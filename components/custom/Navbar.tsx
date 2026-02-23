@@ -25,12 +25,6 @@ const Navbar = () => {
                         >
                             Projects
                         </Link>
-                        <Link
-                            href=""
-                            className="hover:text-blue-500"
-                        >
-                            Contact
-                        </Link>
                     </div>
                 </div>
             </nav>
