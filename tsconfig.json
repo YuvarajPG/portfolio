@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/ui/TextType.jsx", "app/global-not-found.tsx", "components/ui/Card.jsx", "javaScriptTestjts", "javaScriptTest.js"  ],
+, "components/ui/TextType.jsx", "app/global-not-found.tsx", "components/ui/Card.tsx", "javaScriptTestjts", "javaScriptTest.js", "components/custom/Section2.jsx", "components/custom/Section3.jsx"  ],
   "exclude": ["node_modules"]
 }

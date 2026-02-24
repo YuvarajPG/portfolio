@@ -7,6 +7,8 @@ import githubLogo from "../../public/github.png";
 import instagramLogo from "../../public/instagram.png";
 import linkedinLogo from "../../public/linkedin.png";
 import location from "../../public/location.png";
+import resume from "../../public/resume.png";
+import email from "../../public/email.png";
 
 const Main = () => {
     const words = [
@@ -30,55 +32,73 @@ const Main = () => {
                         alt="Location"
                         className="h-6 w-6 absolute -translate-y-3.25 mt-3 -translate-x-24 "
                     />
-                    <div className="flex gap-4 mt-3">
-                        <div className="">
-                            <Link
-                                href="https://github.com/YuvarajPG"
-                                target="_blank"
-                            >
-                                <Image
-                                    src={githubLogo}
-                                    alt="GitHub Logo"
-                                    width={30}
-                                />
-                                {/* <span className="">
+                </div>
+                <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in">
+                    <>
+                        <Link
+                            href="https://github.com/YuvarajPG"
+                            target="_blank"
+                        >
+                            <Image
+                                src={githubLogo}
+                                alt="GitHub Logo"
+                                width={30}
+                            />
+                            {/* <span className="">
                                     GitHub
                                 </span> */}
-                            </Link>
-                        </div>
+                        </Link>
+                    </>
 
-                        <div>
-                            <Link
-                                href="https://www.linkedin.com/in/yuvarajpg"
-                                target="_blank"
-                            >
-                                <Image
-                                    src={linkedinLogo}
-                                    alt="LinkedIn Logo "
-                                    width={30}
-                                />
-                                {/* <span className="">
+                    <>
+                        <Link
+                            href="https://www.linkedin.com/in/yuvarajpg"
+                            target="_blank"
+                        >
+                            <Image
+                                src={linkedinLogo}
+                                alt="LinkedIn Logo "
+                                width={30}
+                            />
+                            {/* <span className="">
                                     Linkedin
                                 </span> */}
-                            </Link>
-                        </div>
+                        </Link>
+                    </>
 
-                        <div>
-                            <Link
-                                href="https://www.instagram.com/_yuva_raj_21/"
-                                target="_blank"
-                            >
-                                <Image
-                                    src={instagramLogo}
-                                    alt="Instagram Logo"
-                                    width={30}
-                                />
-                                {/* <span className="">
+                    <>
+                        <Link
+                            href="https://www.instagram.com/_yuva_raj_21/"
+                            target="_blank"
+                        >
+                            <Image
+                                src={instagramLogo}
+                                alt="Instagram Logo"
+                                width={30}
+                            />
+                            {/* <span className="">
                                     Instragram
                                 </span> */}
-                            </Link>
-                        </div>
-                    </div>
+                        </Link>
+                    </>
+                    <>
+                        <Link href="mailto:yuvar2978@gmail.com" target="_blank">
+                            <Image
+                                src={email}
+                                alt="Email Icon"
+                                width={30}
+                                className="hover:cursor-pointer"
+                            />
+                        </Link>
+                        <Link href="/Resume.pdf" target="_blank">
+                            <Image
+                                src={resume}
+                                alt="Resume Icon"
+                                width={30}
+                                className="hover:cursor-pointer"
+                            />
+                        </Link>
+                    </>
                 </div>
             </div>
         </>
