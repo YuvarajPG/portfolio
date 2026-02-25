@@ -22,7 +22,7 @@ const Main = () => {
                 <Spotlight />
                 <TypewriterEffectSmooth
                     words={words}
-                    className="text-white h-auto text-lg flex justify-center sm:text-3xl w-max m-0"
+                    className="text-white h-auto text-3xl flex justify-center sm:text-4xl w-max m-0"
                 />
                 <div className="animate-in fade-in duration-3000 ease-in container flex flex-col items-center justify-center  m-0 p-0">
                     <p className="text-white text-2xl">Web Developer</p>
@@ -30,7 +30,7 @@ const Main = () => {
                     <Image
                         src={location}
                         alt="Location"
-                        className="h-6 w-6 absolute -translate-y-3.25 mt-3 -translate-x-24 "
+                        className="h-6 w-6 absolute translate-y-2 mt-3 -translate-x-24 "
                     />
                 </div>
                 <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in">
