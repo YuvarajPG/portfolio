@@ -1,20 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+    output: "export",
 
-  experimental: {
-    globalNotFound: true,
-  },
+    experimental: {
+        globalNotFound: true,
+    },
 
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.jsdelivr.net",
-      },
-    ],
-  },
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "cdn.jsdelivr.net",
+            },
+        ],
+        unoptimized: true,
+    },
 };
 
 export default nextConfig;
