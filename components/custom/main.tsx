@@ -18,19 +18,19 @@ const Main = () => {
     ];
     return (
         <>
-            <div className="h-screen w-screen flex flex-col items-center justify-center bg-black/96 antialiased bg-grid-white/[0.02] overflow-hidden relative">
+            <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-black/96 antialiased bg-grid-white/[0.02] overflow-hidden relative">
                 <Spotlight />
                 <TypewriterEffectSmooth
                     words={words}
-                    className="text-white h-auto text-3xl flex justify-center sm:text-4xl w-max m-0"
+                    className="text-white h-auto text-3xl flex justify-center sm:text-4xl w-max m-0 max-[265px]:text-2xl"
                 />
                 <div className="animate-in fade-in duration-3000 ease-in container flex flex-col items-center justify-center  m-0 p-0">
-                    <p className="text-white text-2xl">Web Developer</p>
-                    <p className="text-white">Salem,Tamil Nadu,India</p>
+                    <p className="text-white text-2xl max-[265px]:text-lg">Web Developer</p>
+                    <p className="text-white max-[265px]:text-sm">Salem,Tamil Nadu,India</p>
                     <Image
                         src={location}
                         alt="Location"
-                        className="h-6 w-6 absolute translate-y-2 mt-3 -translate-x-24 "
+                        className="h-6 w-6 absolute translate-y-2 mt-3 -translate-x-24 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5"
                     />
                 </div>
                 <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in">

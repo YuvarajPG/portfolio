@@ -4,11 +4,20 @@ import ProjectCard from "@/components/custom/ProjectCard";
 
 const Page = () => {
     return (
-        <>
-            <div className="mb-5 min-h-screen mt-10 flex gap-6 flex-col md:flex-row items-center md:justify-center hover:   cursor-pointer hover:scale-105 transition-transform duration-300">
+        <div className="mt-25 flex flex-col items-center justify-center mb-80">
+            <p className="text-center text-2xl font-bold mb-5 my-auto ">
+                My Projects
+            </p>
+            <div className="flex flex-col mt-5 gap-5 md:flex-row items-center md:justify-center hover:cursor-pointer hover:scale-105 transition-transform duration-300">
                 <ProjectCard
                     className=""
-                    techs={["HTML5", "TailwindCSS", "JavaScript", "React JS"]}
+                    techs={[
+                        "HTML5",
+                        "CSS3",
+                        "TailwindCSS",
+                        "JavaScript",
+                        "React JS",
+                    ]}
                     name="Todo App"
                     previewImage="/todo_preview.png"
                     ImageBtn1="/githubBtn.png"
@@ -23,24 +32,26 @@ const Page = () => {
                     className=""
                     techs={[
                         "HTML5",
+                        "CSS3",
                         "TailwindCSS",
                         "JavaScript",
+                        "TypeScript",
                         "React JS",
                         "Next JS",
                     ]}
                     name="Portfolio Website"
-                    previewImage="/portfolio_preview.png"
+                    previewImage="/porflio_2.png"
                     ImageBtn1="/githubBtn.png"
                     ImageBtn2="🚀"
                     Text1="GitHub"
                     Text2="Preview"
                     Link1="https://github.com/YuvarajPG/portfolio"
-                    
                     //"https://portfolio-phi-steel-w7uujjbyn9.vercel.app/"
                     btnStyle2="disabled bg-gray-400"
                 />
+                
             </div>
-        </>
+        </div>
     );
 };
 

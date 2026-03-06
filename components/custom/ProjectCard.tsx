@@ -1,5 +1,5 @@
 "use client";
-// import CardSection from "@/components/custom/Cards";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,8 +12,8 @@ const ProjectCard = ({
     previewImage,
     Text1,
     Text2,
-    Link1,
-    Link2 = "null",
+    Link1 /*  Github Link */,
+    Link2 = "#" /* Preview link */,
     ImageBtn1,
     ImageBtn2,
     target,
@@ -40,27 +40,43 @@ const ProjectCard = ({
 }) => {
     return (
         <div
-            className={`${className} hover:cursor-pointer hover:scale-105 transition-transform duration-300`}
+            className={`${className} hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4`}
         >
-            <div
-                className={`rounded border-2 border-black h-110 w-80 fled flex-col justify-between bg-white shadow-lg flex py-4`}
-            >
-                <div>
+            <div className="rounded border-2 border-black flex max-w-90 flex-col gap-4 bg-white shadow-lg py-4 max-[1158px]:max-h-130">
+                {/* ===== PREVIEW IMAGE SECTION ===== */}
+                <div className="w-full h-55  relative rounded-2xl overflow-hidden group">
                     <Image
+                    loading="eager"
                         src={previewImage}
-                        width={320}
-                        height={240}
                         alt={name}
-                        className="rounded-2xl px-6 w-full h-48 object-cover hover:scale-105 transition-transform duration-200"
+                        fill
+                        className="px-2 object-cover object-center my-auto
+                        transition-all duration-300
+                        group-hover:blur-sm group-hover:scale-105"
                     />
-                </div>
-                <div>
-                    <p className="text-xl font-bold px-4">{name}</p>
-                    <div className="flex gap-2 px-4 flex-col">
-                        <span>
-                            <p>Technologies Used</p>
+
+                    {/* Overlay */}
+                    <div
+                        className="absolute inset-0 flex items-center justify-center
+                        opacity-0 group-hover:opacity-100
+                        transition-opacity duration-300"
+                    >
+                        <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-lg font-semibold">
+                            <Link href={Link2} target={target}>
+                                Preview
+                            </Link>
                         </span>
-                        <span className="flex gap-2 flex-wrap">
+                    </div>
+                </div>
+
+                {/* ===== PROJECT INFO ===== */}
+                <div className="flex flex-col pt-4 gap-1">
+                    <p className="text-xl font-bold px-4">{name}</p>
+
+                    <div className="flex gap-2 px-4 flex-col">
+                        <p>Technologies Used</p>
+
+                        <span className="flex gap-2 flex-wrap mt-2">
                             {techs?.map((tech, index) => (
                                 <span
                                     key={index}
@@ -73,119 +89,76 @@ const ProjectCard = ({
                     </div>
                 </div>
 
-                <div className="flex justify-around">
+                {/* ===== BUTTONS ===== */}
+                <div
+                    className={`flex justify-around px-4 gap-2 relative h-max flex-wrap bottom-0 mt-auto  max-[908px]:w-full max-[908px]:flex-col ${!Link2 ? "pointer-events-none" : ""}`}
+                >
+                    {/* Button 1 */}
                     <button
-                        className={`${btnStyle1} bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200`}
+                        className={`${btnStyle1} bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all duration-200`}
                     >
                         <Link
                             href={Link1}
                             target={target}
-                            className="group gap-1 flex items-center"
+                            className="flex items-center gap-1 justify-center"
                         >
                             {Text1}
-                            <span>
+                            {ImageBtn1.includes(".png") ||
+                            ImageBtn1.includes(".jpg") ||
+                            ImageBtn1.includes(".jpeg") ? (
                                 <Image
                                     src={ImageBtn1}
-                                    width={20}
-                                    height={20}
+                                    width={40}
+                                    height={40}
+                                    placeholder="empty"
+                                    // quality={100}
                                     alt={
-                                        altImage1?.trim()
-                                            ? altImage1
+                                        altImage2?.trim()
+                                            ? altImage2
                                             : "Button Icon"
                                     }
-                                    className="group-hover:scale-110 transition-transform duration-200"
+                                    className="w-5 h-5 transition-transform duration-200 hover:scale-110"
                                 />
-                            </span>
+                            ) : (
+                                ImageBtn1
+                            )}
                         </Link>
                     </button>
+
+                    {/* Button 2 */}
                     <button
-                        className={`${btnStyle2 || "bg-green-500 hover:bg-green-600"}  text-white px-4 py-2 rounded  transition-colors duration-200`}
+                        className={`${btnStyle2 || "bg-green-500 hover:bg-green-600"} text-white px-4 py-2 rounded transition-colors duration-200`}
                     >
                         <Link
                             href={Link2}
                             target={target}
-                            className="group gap-1 flex items-center"
+                            className="flex items-center gap-1 justify-center"
                         >
                             {Text2}
-                            <span
-                                className={`transition-transform duration-200 ${Link2 ? null : "group-hover:-translate-y-1 group-hover:translate-x-1"}`}
-                            >
-                                {ImageBtn2}
-                            </span>
+                            {ImageBtn2.includes(".png") ||
+                            ImageBtn2.includes(".jpg") ||
+                            ImageBtn2.includes(".jpeg") ? (
+                                <Image
+                                    src={ImageBtn2}
+                                    width={20}
+                                    height={20}
+                                    quality={100}
+                                    alt={
+                                        altImage3?.trim()
+                                            ? altImage3
+                                            : "Button Icon"
+                                    }
+                                    className="transition-transform duration-200 hover:scale-110 object-cover"
+                                />
+                            ) : (
+                                ImageBtn2
+                            )}
                         </Link>
                     </button>
                 </div>
             </div>
         </div>
     );
-    /* return (
-        <div
-            className={`flex bg-blue-300 w-1/2 h-fit rounded-lg items-center justify-center max-w-100 ${target ? "cursor-pointer" : ""} ${className} min-h-53.75`}
-        >
-            <CardSection
-                name={name}
-                logo={previewImage}
-                className="text-2xl font-bold focus:outline-none focus:shadow-0"
-            />
-
-            <div>
-                <p
-                    className={`text-black items-start mx-2 text-lg  bg-gray-200 p-4 rounded-lg ${target ? "cursor-pointer" : ""}`}
-                >
-                    Technologies used
-                    <span className="grid grid-flow-col max-h-8.75 gap-2 mt-2 ">
-                        {tech_1_Image?.trim() && (
-                            <Image
-                                width={35}
-                                height={35}
-                                src={tech_1_Image}
-                                alt={altImage1}
-                            />
-                        )}
-                        {tech_2_Image?.trim() && (
-                            <Image
-                                width={35}
-                                height={35}
-                                src={tech_2_Image}
-                                alt={altImage2}
-                            />
-                        )}
-                        {tech_3_Image?.trim() && (
-                            <Image
-                                width={35}
-                                height={35}
-                                src={tech_3_Image}
-                                alt={altImage3}
-                            />
-                        )}
-                    </span>
-                </p>
-                <div className="flex gap-4 px-4 justify-around">
-                    <Link
-                        href={Link1}
-                        target={target}
-                        className="flex items-center -gap-1 group hover:underline"
-                    >
-                        {Text1}
-                        <span className="transition-transform duration-200 group-hover:translate-x-1">
-                            🔗
-                        </span>
-                    </Link>
-
-                    <Link
-                        href={Link2}
-                        target={target}
-                        className="flex items-center -gap-1 group hover:underline"
-                    >
-                        {Text2}
-                        <span className="transition-transform duration-200 group-hover:translate-x-1">
-                            🚀
-                        </span>
-                    </Link>
-                </div>
-            </div>
-        </div>
-    ); */
 };
 
 export default ProjectCard;

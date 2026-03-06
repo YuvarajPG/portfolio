@@ -1,7 +1,7 @@
 "use client";
 // import Dummy from "@/components/custom/Dummy";
 import Main from "@/components/custom/main";
-import Section2 from "@/components/custom/Section2";
+import Section2 from "@/components/custom/skillSection";
 import Section3 from "@/components/custom/Section3";
 const Page = () => {
     return (
@@ -9,7 +9,7 @@ const Page = () => {
             <Main />
             <Section2 />
             <Section3 />
-            
+
             {/* placeholder */}
             {/* <Dummy /> */}
         </div>
