@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
                 />
             </head>
-            <body>
+            <body className="overflow-x-hidden">
                 {/* <Navbar /> */}
                 <NavbarV2/>
                 {children}

@@ -44,7 +44,7 @@ const ProjectCard = ({
         >
             <div className="rounded border-2 border-black flex max-w-90 flex-col gap-4 bg-white shadow-lg py-4 max-[1158px]:max-h-130">
                 {/* ===== PREVIEW IMAGE SECTION ===== */}
-                <div className="w-full h-55  relative rounded-2xl overflow-hidden group">
+                <div className="h-55  relative rounded-2xl overflow-hidden group">
                     <Image
                     loading="eager"
                         src={previewImage}

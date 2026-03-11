@@ -35,7 +35,7 @@
         "javaScriptTestjts",
         "javaScriptTest.js",
         "components/custom/skillSection.tsx",
-        "components/custom/Section3.jsx"
+        "components/custom/Section3.tsx"
     ],
     "exclude": ["node_modules"]
 }

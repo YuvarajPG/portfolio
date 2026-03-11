@@ -5,7 +5,7 @@ import Section2 from "@/components/custom/skillSection";
 import Section3 from "@/components/custom/Section3";
 const Page = () => {
     return (
-        <div className="overflow-hidden max-w-svw">
+        <div className="overflow-hidden">
             <Main />
             <Section2 />
             <Section3 />

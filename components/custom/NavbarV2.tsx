@@ -19,7 +19,7 @@ const NavbarV2 = () => {
     return (
         <div className="w-full flex justify-center pt-6 absolute top-0 left-0 z-50">
             <ul
-                className={`flex items-center gap-2 px-2 py-2 rounded-full backdrop-blur-md border border-white/10 min-h-12
+                className={`flex items-center gap-2 px-2 py-2 rounded-full backdrop-blur-md max-[260px]:px-0 max-[260px]:text-sm max-[260px]:min-h-10 max-[260px]:gap-1 border border-white/10 min-h-12
         ${color[pathname === "/" ? "Home" : pathname === "/projects" ? "Projects" : "About"]}`}
             >
                 <li>
