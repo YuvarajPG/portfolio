@@ -34,7 +34,7 @@ const CardSection = ({
                     </div>
                 </a>
             ) : (
-                <div className="bg-white dark:bg-gray-700 pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black hover:shadow-2xl shadow-cyan-950  transition-all duration-300 min-h-37.5 justify-center w-25">
+                <div className="bg-white dark:bg-gray-700 pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black hover:shadow-2xl shadow-cyan-950  transition-all duration-300 min-h-37.5 w-25 flex flex-col">
                     <div className="flex w-16 h-16 bg-gray-200 dark:bg-gray-700  rounded-full items-center justify-center mx-auto">
                         <img
                             src={logo}

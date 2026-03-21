@@ -1,10 +1,9 @@
-"use client";
 
-import ProjectCard from "@/components/custom/ProjectCard";
+import ProjectCard from "../../components/custom/ProjectCard";
 
-const Page = () => {
+const Projects = () => {
     return (
-        <div className="mt-25 flex flex-col items-center justify-center mb-80">
+        <div className="mt-25 flex flex-col items-center justify-center mb-80" id="Projects">
             <p className="text-center text-2xl font-bold mb-5 my-auto ">
                 My Projects
             </p>
@@ -55,4 +54,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Projects;

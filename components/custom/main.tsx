@@ -1,5 +1,5 @@
 "use client";
-import { Spotlight } from "@/components/ui/spotlight-new";
+import { Spotlight } from "../../components/ui/spotlight-new";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +24,7 @@ const Main = () => {
                     words={words}
                     className="text-white h-auto text-3xl flex justify-center sm:text-4xl w-max m-0 max-[265px]:text-2xl"
                 />
-                <div className="animate-in fade-in duration-3000 ease-in container flex flex-col items-center justify-center  m-0 p-0">
+                <div className="container flex flex-col items-center justify-center  m-0 p-0 animate-in fade-in duration-3000 ease-in">
                     <p className="text-white text-2xl max-[265px]:text-lg">Web Developer</p>
                     <p className="text-white max-[265px]:text-sm">Salem,Tamil Nadu,India</p>
                     <Image
@@ -100,6 +100,9 @@ const Main = () => {
                         </Link>
                     </>
                 </div>
+                <button className="py-1.5 rounded-full font-medium transition-all duration-200 hover:scale-105 hover:bg-orange-500/50 z-99 text-white bg-orange-600/95.5 px-3 mt-5 animate-in fade-in duration-3000 ease-in">
+                    <p>Download CV</p>
+                </button>
             </div>
         </>
     );

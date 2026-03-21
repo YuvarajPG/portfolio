@@ -1,15 +1,19 @@
 "use client";
+import NavbarV2 from "../components/ui/FuzzyText";
 import "./globals.css";
-import FuzzyText from "@/components/ui/FuzzyText";
-import TextType from "@/components/ui/TextType";
-import { useRouter } from "next/navigation";
+import FuzzyText from "../components/ui/FuzzyText";
+import TextType from "../components/ui/TextType";
+import { usePathname, useRouter } from "next/navigation";
+import { Children } from "react";
 
 const Notfound = () => {
     const router = useRouter();
+    const pathname = usePathname();
+    
     return (
         <html>
             <body>
-                <div className="h-screen flex flex-col justify-center items-center bg-black">
+                {pathname=='/about'?<div className="h-screen flex flex-col justify-center items-center bg-black">
                     <FuzzyText
                         baseIntensity={0.2}
                         hoverIntensity={0.4}
@@ -21,8 +25,7 @@ const Notfound = () => {
                     <TextType
                         className="text-red-600 z-99 text-3xl md:text-5xl font-bold mt-4"
                         text={[
-                            "Page Not Found",
-                            "Redirecting to Home Page",
+                            "Page Not Found Redirecting to Home Page",
                             "in 3 seconds...",
                             "in 2 seconds...",
                             "in 1 second...",
@@ -40,7 +43,13 @@ const Notfound = () => {
                             }, 12000);
                         }}
                     />
-                </div>
+                </div>:
+                // <div className="flex flex-col items-center">
+                //     {/* <NavbarV2/> */}
+                //     <span className="pt-35 text-5xl ">PAGE UNDER CONSTRUCTION</span>
+                // </div>
+                null
+                }
             </body>
         </html>
     );

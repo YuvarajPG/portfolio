@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-html,
+html{
+  scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
