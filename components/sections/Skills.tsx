@@ -1,4 +1,4 @@
-import CardSection from "./Cards";
+import CardSection from "../custom/Cards";
 const Section2 = () => {
     return (
         <>

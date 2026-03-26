@@ -1,5 +1,5 @@
 "use client";
-import { Spotlight } from "../../components/ui/spotlight-new";
+import { Spotlight } from "../ui/spotlight-new";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,7 +90,7 @@ const Main = () => {
                                 className="hover:cursor-pointer"
                             />
                         </Link>
-                        <Link href="/Resume.pdf" target="_blank">
+                        <Link href="/resume_v2_updated.pdf" target="_blank">
                             <Image
                                 src={resume}
                                 alt="Resume Icon"
@@ -100,9 +100,13 @@ const Main = () => {
                         </Link>
                     </>
                 </div>
-                <button className="py-1.5 rounded-full font-medium transition-all duration-200 hover:scale-105 hover:bg-orange-500/50 z-99 text-white bg-orange-600/95.5 px-3 mt-5 animate-in fade-in duration-3000 ease-in">
-                    <p>Download CV</p>
-                </button>
+                <a 
+                    href="/resume_v2_updated.pdf" 
+                    download="Yuvaraj_Resume.pdf"
+                    className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-orange-600/95.5 hover:bg-orange-600/80 px-4 mt-5 animate-in fade-in duration-3000 ease-in block"
+                >
+                    Download CV
+                </a>
             </div>
         </>
     );

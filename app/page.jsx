@@ -1,9 +1,11 @@
 "use client";
 // import Dummy from "../components/custom/Dummy";
-import Main from "../components/custom/main";
-import AboutMe from "../components/custom/AboutMe";
-import SkillSection from "../components/custom/skillSection";
-import Projects from '../components/custom/Projects'
+import Main from "../components/sections/Hero";
+import AboutMe from "../components/sections/AboutMe";
+import SkillSection from "../components/sections/Skills";
+import Projects from '../components/sections/Projects';
+import Contact from '../components/sections/Contact';
+
 const Page = () => {
     return (
         <div className="overflow-hidden">
@@ -11,7 +13,7 @@ const Page = () => {
             <AboutMe />
             <SkillSection />
             <Projects />
-
+            {/* <Contact /> */}
             {/* placeholder */}
             {/* <Dummy /> */}
         </div>
