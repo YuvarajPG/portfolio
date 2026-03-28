@@ -1,16 +1,14 @@
 "use client";
 import ProjectCard from "../../components/custom/ProjectCard";
 import { useEffect, useState } from "react";
-import { setLatestCommit } from "../../app/api/webhooks/route";
 const Projects = () => {
-  const [date, setDate] = useState(null);
-
+  const [date, setDate] = useState(null||String);
   useEffect(() => {
     fetch("/api/latest-commit")
       .then((res) => res.json())
       .then((data) => setDate(data.date))
       .catch(() => setDate("N/A"));
-  }, []);
+  });
 
   return (
     <section
