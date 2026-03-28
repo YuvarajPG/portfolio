@@ -1,8 +1,8 @@
 "use client";
-import ProjectCard from "../../components/custom/ProjectCard";
+import ProjectCard from "../custom/ProjectCard";
 import { useEffect, useState } from "react";
 const Projects = () => {
-  const [date, setDate] = useState(null||String);
+  const [date, setDate] = useState(null);
   useEffect(() => {
     fetch("/api/latest-commit")
       .then((res) => res.json())
