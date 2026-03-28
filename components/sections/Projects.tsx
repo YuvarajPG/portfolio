@@ -26,6 +26,7 @@ const Projects = () => {
           target="_blank"
         />
         <ProjectCard
+          status={["completed"]}
           className="hover:cursor-pointer hover:scale-105"
           techs={[
             "HTML5",

@@ -1,12 +1,13 @@
 "use client";
 
-import { span } from "framer-motion/client";
+import { p } from "framer-motion/client";
 import Image from "next/image";
 import Link from "next/link";
 
 const ProjectCard = ({
     techs,
     altImage1,
+    status=["ongoing"],
     altImage2,
     altImage3,
     name,
@@ -24,6 +25,7 @@ const ProjectCard = ({
 }: {
     techs?: string[];
     altImage1?: string;
+    status?: string[];
     altImage2?: string;
     altImage3?: string;
     name: string;
@@ -66,9 +68,21 @@ const ProjectCard = ({
                     </div>
                 </div>
 
-                <div className="flex flex-col pt-4 gap-1">
-                    <p className="text-xl font-bold px-4">{name}</p>
-
+                <div className="flex flex-col pt-4 gap-1 relative">
+                    <div className="flex justify-between">
+                        <p className="text-xl font-bold px-4">{name}</p>
+                        {status.includes("completed") ?
+                            (
+                                <p className="text-white font-medium bg-green-500 rounded-xl px-2 me-4 max-h-7 flex justify-center items-center"><span>
+                                Completed</span></p>
+                            )
+                            :
+                            (
+                                <p className="text-white font-medium bg-yellow-500 rounded-xl px-2 me-4 max-h-7 flex justify-center items-center"><span>
+                                On Going</span></p>
+                            )
+                        }
+                        </div>
                     <div className="flex gap-2 px-4 flex-col">
                         <p className="text-sm text-muted-foreground">
                             Technologies Used
