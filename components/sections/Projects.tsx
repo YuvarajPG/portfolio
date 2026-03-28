@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { getTimestamp } from "swr/_internal";
 import ProjectCard from "../../components/custom/ProjectCard";
 
 const Projects = () => {
@@ -48,6 +49,24 @@ const Projects = () => {
           btnStyle2="disabled bg-gray-600 hover:bg-gray-500"
         />
       </div>
+      <div className="flex flex-col items-center justify-center">
+        <p className="text-2xl md:text-3xl max-[769px]:text-4xl font-bold text-white mb-4">
+          Upcoming Projects
+        </p>
+        <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
+        <p className="text-white ">COMING SOON</p>
+      </div>
+      <p className="text-white">
+        last updated date:
+        {new Date()
+          .toLocaleDateString("en-GB")
+          .split("/")
+          .map((v, i) => (i === 2 ? v.slice(-2) : v))
+          .join("-")?new Date().toLocaleDateString("en-GB")
+          .split("/")
+          .map((v, i) => (i === 2 ? v.slice(-2) : v))
+          .join("-"):null}
+      </p>
     </section>
   );
 };
