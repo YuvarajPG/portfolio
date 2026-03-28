@@ -1,5 +1,0 @@
-allowBuilds:
-  ffi: true
-  ref: false
-  sharp: false
-  unrs-resolver: false
