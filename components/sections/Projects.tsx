@@ -1,20 +1,31 @@
 "use client";
-import { getTimestamp } from "swr/_internal";
 import ProjectCard from "../../components/custom/ProjectCard";
-
+import { useEffect, useState } from "react";
+import { setLatestCommit } from "../../app/api/webhooks/route";
 const Projects = () => {
+  const [date, setDate] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/latest-commit")
+      .then((res) => res.json())
+      .then((data) => setDate(data.date))
+      .catch(() => setDate("N/A"));
+  }, []);
+
   return (
     <section
-      className={`min-h-dvh flex flex-col items-center mb-80 py-10 border-t-2 justify-center`}
+      className="min-h-dvh flex flex-col items-center mb-80 py-10 border-t-2 justify-center"
       id="Projects"
     >
-      <p className="text-3xl md:text-5xl max-[769px]:text-4xl font-bold text-white mb-4">
+      <p className="text-3xl md:text-5xl font-bold text-white mb-4">
         My Projects
       </p>
-      <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
-      <div className="flex flex-col mt-12 md:mt-10 gap-5 md:gap-2 md:flex-row items-center  md:justify-center mb-5 transition-transform duration-300">
+
+      <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 rounded-full" />
+
+      <div className="flex flex-col mt-12 gap-5 md:flex-row items-center justify-center mb-5">
         <ProjectCard
-          className="hover:cursor-pointer hover:scale-105"
+          className="hover:scale-105"
           techs={["HTML5", "CSS3", "TailwindCSS", "JavaScript", "React JS"]}
           name="Todo App"
           previewImage="/todo_preview.png"
@@ -26,9 +37,10 @@ const Projects = () => {
           Link2="https://todo-two-puce-47.vercel.app/"
           target="_blank"
         />
+
         <ProjectCard
           status={["completed"]}
-          className="hover:cursor-pointer hover:scale-105"
+          className="hover:scale-105"
           techs={[
             "HTML5",
             "CSS3",
@@ -49,24 +61,17 @@ const Projects = () => {
           btnStyle2="disabled bg-gray-600 hover:bg-gray-500"
         />
       </div>
+
       <div className="flex flex-col items-center justify-center">
-        <p className="text-2xl md:text-3xl max-[769px]:text-4xl font-bold text-white mb-4">
+        <p className="text-2xl md:text-3xl font-bold text-white mb-4">
           Upcoming Projects
         </p>
-        <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
-        <p className="text-white ">COMING SOON</p>
+        <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 rounded-full" />
+        <p className="text-white">COMING SOON</p>
       </div>
-      <p className="text-white">
-        last updated date:
-        {new Date()
-          .toLocaleDateString("en-GB")
-          .split("/")
-          .map((v, i) => (i === 2 ? v.slice(-2) : v))
-          .join("-")?new Date().toLocaleDateString("en-GB")
-          .split("/")
-          .map((v, i) => (i === 2 ? v.slice(-2) : v))
-          .join("-"):null}
-      </p>
+
+      {/* ✅ Show commit date */}
+      <p className="text-white mt-6">Last updated: {date || "Loading..."}</p>
     </section>
   );
 };
