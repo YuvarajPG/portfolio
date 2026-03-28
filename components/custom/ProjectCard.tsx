@@ -1,5 +1,6 @@
 "use client";
 
+import { span } from "framer-motion/client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -88,9 +89,9 @@ const ProjectCard = ({
                 </div>
 
                 <div className="flex justify-around px-4 gap-2 flex-wrap mt-auto max-[908px]:flex-col">
-
+                    {/* Github */}
                     <button
-                        className={`${btnStyle1 || ""} bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200`}
+                        className={`${btnStyle1 || ""}  group bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200`}
                     >
                         <Link
                             href={Link1}
@@ -105,14 +106,13 @@ const ProjectCard = ({
                                     src={ImageBtn1}
                                     width={40}
                                     height={40}
-                                    placeholder="empty"
                                     // quality={100}
                                     alt={
                                         altImage2?.trim()
                                             ? altImage2
                                             : "Button Icon"
                                     }
-                                    className="w-5 h-5 transition-transform duration-200 hover:scale-110"
+                                    className="w-5 h-5 transition-all duration-200 group-hover:scale-125 group-hover:rotate-6"
                                 />
                             ) : (
                                 ImageBtn1
@@ -122,28 +122,31 @@ const ProjectCard = ({
 
                     {/* Preview */}
                     <button
-                        className={`${btnStyle2 || "bg-gr"} bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200`}
+                        className={`${btnStyle2 || "bg-green-600 hover:bg-green-500"}text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 group`}
                     >
-                        <Link
+                        <a
                             href={Link2}
                             target={target}
-                            className="flex items-center gap-1 justify-center"
+                            className="flex items-center gap-1 justify-center relative"
                         >
                             {Text2}
                             {ImageBtn2.includes(".png") ||
                                 ImageBtn2.includes(".jpg") ||
-                                ImageBtn2.includes(".jpeg") ? (
+                                ImageBtn2.includes(".jpeg")
+                                ? (
                                 <Image
                                     src={ImageBtn2}
                                     width={20}
                                     height={20}
                                     alt={altImage3?.trim() || "icon"}
-                                    className="hover:scale-110 transition"
+                                    className=""
                                 />
                             ) : (
-                                ImageBtn2
+                                    <span className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110">
+                                        {ImageBtn2}
+                                </span>
                             )}
-                        </Link>
+                        </a>
                     </button>
                 </div>
             </div>

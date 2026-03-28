@@ -16,7 +16,7 @@ const Main = () => {
     ];
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center bg-black/96 antialiased bg-grid-white/[0.02] overflow-hidden relative">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-black/96 antialiased bg-grid-white/[0.02] overflow-hidden relative" id="hero">
                 <Spotlight />
                 <TypewriterEffectSmooth
                     words={words}
