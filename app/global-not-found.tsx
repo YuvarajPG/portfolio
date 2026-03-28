@@ -3,8 +3,7 @@ import NavbarV2 from "../components/ui/FuzzyText";
 import "./globals.css";
 import FuzzyText from "../components/ui/FuzzyText";
 import TextType from "../components/ui/TextType";
-import { usePathname, useRouter } from "next/navigation";
-import { Children } from "react";
+import { usePathname,useRouter } from 'next/navigation';
 
 const Notfound = () => {
     const router = useRouter();

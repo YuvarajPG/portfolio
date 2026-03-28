@@ -12,8 +12,8 @@ const CardSection = ({
 }) => {
     return (
         <div
-            className={`bg-white/10 backdrop-blur-md rounded-xl gap-4 p-2 justify-center  flex flex-col items-center
-                hover:scale-105 hover:bg-white/20 transition-all duration-300 text-center h-auto`}
+            className="bg-white/10 backdrop-blur-md rounded-xl gap-4 p-2 justify-center  flex flex-col items-center
+                hover:scale-105 hover:bg-white/20 transition-all duration-300 text-center h-auto"
         >
             {link ? (
                 <a

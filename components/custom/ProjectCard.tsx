@@ -12,8 +12,8 @@ const ProjectCard = ({
     previewImage,
     Text1,
     Text2,
-    Link1 /*  Github Link */,
-    Link2 = "#" /* Preview link */,
+    Link1,
+    Link2 = "#",
     ImageBtn1,
     ImageBtn2,
     target,
@@ -40,27 +40,23 @@ const ProjectCard = ({
 }) => {
     return (
         <div
-            className={`${className} hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4`}
+            className={`${className} hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4 will-change-transform bg-card/50 text-white`}
         >
-            <div className="rounded border-2 border-black flex max-w-90 flex-col gap-4 bg-white shadow-lg py-4 max-[1158px]:max-h-130">
-                {/* ===== PREVIEW IMAGE SECTION ===== */}
-                <div className="h-55  relative rounded-2xl overflow-hidden group">
+            <div className="rounded-2xl border border-white/10 flex max-w-90 flex-col gap-4
+                backdrop-blur-md shadow-lg py-4 max-[1158px]:max-h-130
+                transition-all duration-300 hover:shadow-2xl
+            ">
+
+                <div className="h-55 relative rounded-2xl overflow-hidden group">
                     <Image
-                    loading="eager"
+                        loading="eager"
                         src={previewImage}
                         alt={name}
                         fill
-                        className="px-2 object-cover object-center my-auto
-                        transition-all duration-300
-                        group-hover:blur-sm group-hover:scale-105"
+                        className="px-2 object-cover object-center my-auto transition-all duration-500 ease-out group-hover:blur-sm group-hover:scale-105"
                     />
 
-                    {/* Overlay */}
-                    <div
-                        className="absolute inset-0 flex items-center justify-center
-                        opacity-0 group-hover:opacity-100
-                        transition-opacity duration-300"
-                    >
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-lg font-semibold">
                             <Link href={Link2} target={target}>
                                 Preview
@@ -69,18 +65,20 @@ const ProjectCard = ({
                     </div>
                 </div>
 
-                {/* ===== PROJECT INFO ===== */}
                 <div className="flex flex-col pt-4 gap-1">
                     <p className="text-xl font-bold px-4">{name}</p>
 
                     <div className="flex gap-2 px-4 flex-col">
-                        <p>Technologies Used</p>
+                        <p className="text-sm text-muted-foreground">
+                            Technologies Used
+                        </p>
 
                         <span className="flex gap-2 flex-wrap mt-2">
                             {techs?.map((tech, index) => (
                                 <span
                                     key={index}
-                                    className="bg-blue-400 px-2 py-1 rounded text-sm text-white font-semibold hover:bg-blue-500 transition-all hover:scale-110 duration-200"
+                                    className="bg-blue-500/80 px-2 py-1 rounded-md text-xs text-white font-semibold
+                                    hover:bg-blue-500 hover:scale-105 transition-all duration-200"
                                 >
                                     {tech}
                                 </span>
@@ -89,13 +87,10 @@ const ProjectCard = ({
                     </div>
                 </div>
 
-                {/* ===== BUTTONS ===== */}
-                <div
-                    className={`flex justify-around px-4 gap-2 relative h-max flex-wrap bottom-0 mt-auto  max-[908px]:w-full max-[908px]:flex-col ${!Link2 ? "pointer-events-none" : ""}`}
-                >
-                    {/* Button 1 */}
+                <div className="flex justify-around px-4 gap-2 flex-wrap mt-auto max-[908px]:flex-col">
+
                     <button
-                        className={`${btnStyle1} bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all duration-200`}
+                        className={`${btnStyle1 || ""} bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200`}
                     >
                         <Link
                             href={Link1}
@@ -104,8 +99,8 @@ const ProjectCard = ({
                         >
                             {Text1}
                             {ImageBtn1.includes(".png") ||
-                            ImageBtn1.includes(".jpg") ||
-                            ImageBtn1.includes(".jpeg") ? (
+                                ImageBtn1.includes(".jpg") ||
+                                ImageBtn1.includes(".jpeg") ? (
                                 <Image
                                     src={ImageBtn1}
                                     width={40}
@@ -125,9 +120,9 @@ const ProjectCard = ({
                         </Link>
                     </button>
 
-                    {/* Button 2 */}
+                    {/* Preview */}
                     <button
-                        className={`${btnStyle2 || "bg-green-500 hover:bg-green-600"} text-white px-4 py-2 rounded transition-colors duration-200`}
+                        className={`${btnStyle2 || "bg-gr"} bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200`}
                     >
                         <Link
                             href={Link2}
@@ -136,19 +131,14 @@ const ProjectCard = ({
                         >
                             {Text2}
                             {ImageBtn2.includes(".png") ||
-                            ImageBtn2.includes(".jpg") ||
-                            ImageBtn2.includes(".jpeg") ? (
+                                ImageBtn2.includes(".jpg") ||
+                                ImageBtn2.includes(".jpeg") ? (
                                 <Image
                                     src={ImageBtn2}
                                     width={20}
                                     height={20}
-                                    quality={100}
-                                    alt={
-                                        altImage3?.trim()
-                                            ? altImage3
-                                            : "Button Icon"
-                                    }
-                                    className="transition-transform duration-200 hover:scale-110 object-cover"
+                                    alt={altImage3?.trim() || "icon"}
+                                    className="hover:scale-110 transition"
                                 />
                             ) : (
                                 ImageBtn2

@@ -13,8 +13,6 @@ import email from "../../public/email.png";
 const Main = () => {
     const words = [
         { text: "Hello! I'm Yuvaraj" },
-        // { text: "Srimathi, I love you" },
-        // { text: "Srimathi, I like you" },
     ];
     return (
         <>
@@ -100,8 +98,8 @@ const Main = () => {
                         </Link>
                     </>
                 </div>
-                <a 
-                    href="/resume_v2_updated.pdf" 
+                <a
+                    href="/resume_v2_updated.pdf"
                     download="Yuvaraj_Resume.pdf"
                     className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-orange-600/95.5 hover:bg-orange-600/80 px-4 mt-5 animate-in fade-in duration-3000 ease-in block"
                 >

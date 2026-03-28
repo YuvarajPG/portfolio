@@ -2,7 +2,7 @@ import CardSection from "../custom/Cards";
 const Section2 = () => {
     return (
         <>
-            <div className="w-full bg-linear-to-b from-[#1e3c72] via-[#2a5298] to-[#1b2b4b] px-2 py-10 flex flex-col">
+            <div className="w-full px-2 py-10 flex flex-col">
                 <p className="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
                     My Skills
                 </p>
