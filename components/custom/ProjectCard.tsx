@@ -43,11 +43,11 @@ const ProjectCard = ({
 }) => {
     return (
         <div
-            className={`${className} hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4 will-change-transform bg-card/50 text-white`}
+            className={`${className}  hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4 will-change-transform bg-card/50 text-white`}
         >
             <div className="rounded-2xl border border-white/10 flex max-w-90 flex-col gap-4
                 backdrop-blur-md shadow-lg py-4 max-[1158px]:max-h-130
-                transition-all duration-300 hover:shadow-2xl
+                card-glow
             ">
 
                 <div className="h-55 relative rounded-2xl overflow-hidden group">

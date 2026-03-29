@@ -3,7 +3,7 @@ const Projects = () => {
 
   return (
     <section
-      className="min-h-dvh flex flex-col items-center mb-80 py-10 border-t-2 justify-center"
+      className="min-h-dvh flex flex-col items-center mb-80 py-10 border-t border-white/20 justify-center"
       id="Projects"
     >
       <p className="text-3xl md:text-5xl font-bold text-white mb-4">
@@ -37,7 +37,6 @@ const Projects = () => {
             "JavaScript",
             "TypeScript",
             "React JS",
-            "Next JS",
           ]}
           name="Portfolio Website"
           previewImage="/porflio_2.png"
@@ -56,7 +55,7 @@ const Projects = () => {
           Upcoming Projects
         </p>
         <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 rounded-full" />
-        <p className="text-white mt-25">COMING SOON</p>
+        <p className="text-white mt-25">COMING SOON !</p>
       </div>
     </section>
   );

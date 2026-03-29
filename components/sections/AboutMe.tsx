@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const AboutMe = () => {
 
     return (
-        <section className="py-10 bg-black/96 relative overflow-hidden flex flex-col justify-center border-t border-white/20 min-h-screen" id="About">    
+        <section className="py-10 bg-black/96 relative overflow-hidden flex flex-col justify-center border-t border-white/20 min-h-screen" id="About">
             <div className="max-w-5xl mx-auto px-6 relative z-10 w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

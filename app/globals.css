@@ -157,7 +157,7 @@ body {
 @layer base {
   body {
     @apply text-foreground;
-    background: linear-gradient(135deg, #000000, #0f172a, #020617) !important;
+    background: #000 !important;
     min-height: 100vh;
     background-attachment: fixed;
   }
@@ -166,4 +166,24 @@ body {
 * {
   scrollbar-width: none;
   scrollbar-color: var(--color-primary) var(--color-background);
+}
+
+@layer components {
+  .card-glow {
+    @apply transition-all duration-300;
+  }
+
+  /* Desktop (hover devices) */
+  @media (hover: hover) {
+    .card-glow:hover {
+      @apply shadow-2xl shadow-cyan-950;
+    }
+  }
+
+  /* Mobile (no hover) */
+  @media (hover: none) {
+    .card-glow:active {
+      @apply shadow-2xl shadow-cyan-950 scale-95;
+    }
+  }
 }
