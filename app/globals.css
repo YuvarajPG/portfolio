@@ -179,10 +179,10 @@ body {
     @apply scale-110;
   }
 
-  .card-active {
+  /* .card-active {
     @apply shadow-2xl shadow-cyan-600 bg-white/20 scale-105;
     transform: translateY(-4px);
-  }
+  } */
 }
 
 /* @media (hover: none) {
