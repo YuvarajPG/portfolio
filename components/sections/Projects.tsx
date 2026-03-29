@@ -1,14 +1,5 @@
-"use client";
 import ProjectCard from "../custom/ProjectCard";
-import { useEffect, useState } from "react";
 const Projects = () => {
-  const [date, setDate] = useState(null);
-  useEffect(() => {
-    fetch("/api/latest-commit")
-      .then((res) => res.json())
-      .then((data) => setDate(data.date))
-      .catch(() => setDate("N/A"));
-  });
 
   return (
     <section
@@ -60,16 +51,13 @@ const Projects = () => {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mt-10">
         <p className="text-2xl md:text-3xl font-bold text-white mb-4">
           Upcoming Projects
         </p>
         <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 rounded-full" />
-        <p className="text-white">COMING SOON</p>
+        <p className="text-white mt-25">COMING SOON</p>
       </div>
-
-      {/* ✅ Show commit date */}
-      <p className="text-white mt-6">Last updated: {date || "Loading..."}</p>
     </section>
   );
 };
