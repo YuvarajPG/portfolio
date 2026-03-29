@@ -206,8 +206,13 @@ body {
     @apply shadow-sm shadow-cyan-950;
   }
 
-  .glass-card:hover {
-    @apply shadow-2xl drop-shadow-cyan-600 bg-white/20 scale-105;
+  .glass-card-completed:hover {
+    @apply shadow-lg shadow-green-500  scale-105;
+    transform: translateY(-4px);
+  }
+
+  .glass-card-ongoing:hover {
+    @apply shadow-lg shadow-orange-500  scale-105;
     transform: translateY(-4px);
   }
 

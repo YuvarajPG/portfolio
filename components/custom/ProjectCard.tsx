@@ -44,10 +44,18 @@ const ProjectCard = ({
     btnStyle1?: string;
     btnStyle2?: string;
 }) => {
+    const isActive = activeId === id;
+    const isCompleted = status?.includes("completed");
+
+    const activeClass = isActive
+        ? isCompleted
+            ? "glass-card-completed"
+            : "glass-card-ongoing"
+        : "";
     return (
         <div
-            onClick={() => setActiveId(activeId === id ? null : id)}
-            className={`glass-card ${activeId === id ? "focus:glass-active" : ""} ${className || ""} mx-4 my-2`}
+            onClick={() => setActiveId(activeId === id ? null : id)} onMouseEnter={() => setActiveId(id)} onMouseLeave={() => setActiveId(null)}
+            className={`glass-card ${activeClass} ${className || ""} mx-4 my-2`}
         >
             <div className="rounded-xl flex max-w-90 flex-col gap-4 py-4">
                 {/* IMAGE */}
@@ -73,7 +81,7 @@ const ProjectCard = ({
                     <p className="text-xl font-bold relative">{name}</p>
 
                     {status.includes("completed") ? (
-                        <span className="bg-green-500 px-2 rounded-xl text-sm py-1 font-medium">
+                        <span className="bg-green-500 px-2 rounded-xl text-sm py-1 font-medium max-h-fit">
                             Completed
                         </span>
                     ) : (
