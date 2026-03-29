@@ -4,7 +4,7 @@ import Main from "../components/sections/Hero";
 import AboutMe from "../components/sections/AboutMe";
 import SkillSection from "../components/sections/Skills";
 import Projects from "../components/sections/Projects";
-// import Contact from '../components/sections/Contact';
+import Contact from '../components/sections/Contact';
 
 const Page = () => {
   return (
@@ -13,7 +13,7 @@ const Page = () => {
       <AboutMe />
       <SkillSection />
       <Projects />
-      {/* <Contact /> */}
+      <Contact />
       {/* placeholder */}
       {/* <Dummy /> */}
     </div>

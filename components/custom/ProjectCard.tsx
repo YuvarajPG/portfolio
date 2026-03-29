@@ -77,15 +77,15 @@ const ProjectCard = ({
                 </div>
 
                 {/* TITLE */}
-                <div className="flex justify-between px-4 text-center">
+                <div className="flex justify-between px-4">
                     <p className="text-xl font-bold relative">{name}</p>
 
                     {status.includes("completed") ? (
-                        <span className="bg-green-500 px-2 rounded-xl text-sm py-1 font-medium max-h-fit">
+                        <span className="bg-emerald-500 px-2 rounded-xl text-sm py-1 font-medium max-h-fit">
                             Completed
                         </span>
                     ) : (
-                        <span className="bg-yellow-500 px-2 rounded-xl text-sm py-1 font-medium">
+                        <span className="bg-amber-400 px-2 rounded-xl text-sm py-1 font-medium">
                             On Going
                         </span>
                     )}

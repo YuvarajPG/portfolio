@@ -207,12 +207,12 @@ body {
   }
 
   .glass-card-completed:hover {
-    @apply shadow-lg shadow-green-500  scale-105;
+    @apply shadow-lg shadow-emerald-500 scale-105;
     transform: translateY(-4px);
   }
 
   .glass-card-ongoing:hover {
-    @apply shadow-lg shadow-orange-500  scale-105;
+    @apply shadow-lg shadow-amber-400 scale-105;
     transform: translateY(-4px);
   }
 

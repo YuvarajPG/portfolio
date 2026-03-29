@@ -42,18 +42,16 @@ const AboutMe = () => {
                         </h3>
 
                         <p className="text-white/80 text-lg leading-relaxed  text-wrap container">
-                            I am a passionate developer with a strong foundation
-                            in frontend technologies. I specialize in building
-                            modern, responsive, and user-friendly web
-                            applications. I am a quick learner and always
-                            looking to expand my skill set.
+                            I am a web developer who enjoys building modern, responsive web applications with a strong focus on clean design and performance. &nbsp;
+                            I work with React, Tailwind CSS, and JavaScript to create user-friendly interfaces and real-world projects. I like solving problems through code and continuously improving my development skills. &nbsp;
+                            Currently, I&apos;m focused on sharpening my frontend expertise and building projects that stand out.
                         </p>
                     </motion.div>
 
                     {/* RIGHT SIDE */}
                     <motion.div
-                        initial={{ opacity: 0, x: 80, scale: 0.95 }}
-                        whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                        initial={{ opacity: 0, x: 80, filter: "blur(5px)" }}
+                        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                         viewport={{ once: false }}
                         className="grid place-items-center"
@@ -63,7 +61,9 @@ const AboutMe = () => {
                             alt="Profile Image"
                             width={320}
                             height={320}
-                            className="rounded-2xl mx-auto border border-green-500/30 shadow-[0_0_20px_rgba(34,197,94,0.3),0_10px_40px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] active:scale-95 max-w-md max-md:w-60 active:shadow-green-500/50 "
+                            loading="lazy"
+                            sizes="(max-width: 768px) 256px, (max-width: 1024px) 384px, 500px"
+                            className="rounded-2xl mx-auto border border-green-500/30 shadow-[0_0_20px_rgba(34,197,94,0.3),0_10px_40px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] active:scale-95 w-64 md:w-96 lg:w-[450px] object-cover active:shadow-green-500/50"
                         />
                     </motion.div>
                 </div>
