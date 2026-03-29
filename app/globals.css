@@ -170,20 +170,58 @@ body {
 
 @layer components {
   .card-glow {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+    @apply transition-all duration-300 shadow-lg;
+  }
+
+  .card-glow:hover {
+    @apply shadow-2xl shadow-cyan-950 bg-white/20;
+    transform: translateY(-4px);
+    @apply scale-110;
+  }
+
+  .card-glow:active {
+    @apply shadow-2xl shadow-cyan-900/50 scale-95 bg-white/20;
+  }
+}
+
+@media (hover: none) {
+  .card-glow:hover {
+    box-shadow: none;
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+@layer components {
+  .glass-card {
+    /* glass effect */
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+
+    /* spacing + layout */
+    @apply text-white;
+
+    /* animation */
     @apply transition-all duration-300;
+
+    @apply shadow-xs shadow-cyan-600;
   }
 
-  /* Desktop (hover devices) */
-  @media (hover: hover) {
-    .card-glow:hover {
-      @apply shadow-2xl shadow-cyan-950;
-    }
+  .glass-card:hover {
+    @apply shadow-2xl  bg-white/20 scale-105;
+    transform: translateY(-4px);
+    @apply shadow-2xl shadow-cyan-900/50;
   }
 
-  /* Mobile (no hover) */
-  @media (hover: none) {
-    .card-glow:active {
-      @apply shadow-2xl shadow-cyan-950 scale-95;
-    }
+  .glass-card:active {
+    @apply scale-105 shadow-2xl  bg-white/20;
+  }
+}
+
+/* prevent fake hover on mobile */
+@media (hover: none) {
+  .glass-card:hover {
+    box-shadow: none;
+    background: rgba(255,255,255,0.1);
+    transform: none;
   }
 }

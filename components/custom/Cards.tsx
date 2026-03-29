@@ -11,16 +11,16 @@ const CardSection = ({
 }) => {
     return (
         <div
-            className="bg-white/10 backdrop-blur-md rounded-xl gap-4 p-2 justify-center  flex flex-col items-center
-                hover:scale-105 hover:bg-white/20 transition-all duration-300 text-center h-auto"
+            className=" backdrop-blur-md rounded-xl gap-4 p-2 justify-center  flex flex-col items-center
+            text-center h-auto card-glow"
         >
             {link ? (
                 <a
                     href={link}
                     className="text-blue-500 hover:underline mt-2 focus:outline-none focus:ring-0"
                 >
-                    <div className="bg-white dark:bg-gray-700 pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black card-glow w-25">
-                        <div className="flex w-16 h-16 bg-gray-200 dark:bg-gray-700  rounded-full items-center justify-center mx-auto">
+                    <div className="bg-white pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black w-25">
+                        <div className="flex w-16 h-16 bg-gray-200  rounded-full items-center justify-center mx-auto">
                             {
                                 logo&&name!==undefined?
                                     <Image
@@ -37,9 +37,9 @@ const CardSection = ({
                         </h3>
                     </div>
                 </a>
-            ) : (
-                <div className="bg-white dark:bg-gray-700 pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black hover:shadow-2xl shadow-cyan-950  transition-all duration-300 min-h-37.5 w-25 flex flex-col">
-                    <div className="flex w-16 h-16 bg-gray-200 dark:bg-gray-700  rounded-full items-center justify-center mx-auto">
+            ) : (           /* for the skill card the link always false so use this one for the change */
+                <div className="bg-white pt-4 pb-2 rounded-lg  border-black  min-h-37.5 w-25 flex flex-col">
+                    <div className="flex w-16 h-16 bg-gray-200  rounded-full items-center justify-center mx-auto">
                         {
                                 logo&&name!==undefined?
                                     <Image

@@ -9,7 +9,7 @@ const skills = () => {
                 <div className="w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
                 <div className="flex flex-row gap-4 justify-center flex-wrap pt-10 max-[265px]:gap-2 max-[265px]:">
                     <CardSection name="HTML5" logo="/html-5.png" />
-                    <CardSection name="CSS" logo="/CSS.png" />
+                    <CardSection name="CSS" logo="/css.png" />
                     <CardSection name="Tailwind CSS" logo="/TailwindCSS.png" />
                     <CardSection name="bootstarp" logo="/bootstrap.png" />
                     <CardSection name="JavaScript" logo="/js.png" />

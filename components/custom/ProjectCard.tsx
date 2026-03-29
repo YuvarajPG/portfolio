@@ -1,6 +1,5 @@
 "use client";
 
-import { p } from "framer-motion/client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,11 +42,9 @@ const ProjectCard = ({
 }) => {
     return (
         <div
-            className={`${className}  hover:cursor-pointer hover:scale-105 transition-transform duration-300 mx-4 will-change-transform bg-card/50 text-white`}
+            className={`${className} mx-4 will-change-transform  text-white glass-card`}
         >
-            <div className="rounded-2xl border border-white/10 flex max-w-90 flex-col gap-4
-                backdrop-blur-md shadow-lg py-4 max-[1158px]:max-h-130
-                card-glow
+            <div className="rounded-xl flex max-w-90 flex-col gap-4 py-4 max-[1158px]:max-h-130
             ">
 
                 <div className="h-55 relative rounded-2xl overflow-hidden group">
@@ -59,7 +56,7 @@ const ProjectCard = ({
                         className="px-2 object-cover object-center my-auto transition-all duration-500 ease-out group-hover:blur-sm group-hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
                         <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-lg font-semibold">
                             <Link href={Link2} target={target}>
                                 Preview
@@ -136,7 +133,7 @@ const ProjectCard = ({
 
                     {/* Preview */}
                     <button
-                        className={`${btnStyle2 || "bg-green-600 hover:bg-green-500"}text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 group`}
+                        className={`${btnStyle2 || "bg-green-600 hover:bg-green-500"}text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 group `}
                     >
                         <a
                             href={Link2}
@@ -156,7 +153,7 @@ const ProjectCard = ({
                                     className=""
                                 />
                             ) : (
-                                    <span className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110">
+                                    <span className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110 ">
                                         {ImageBtn2}
                                 </span>
                             )}

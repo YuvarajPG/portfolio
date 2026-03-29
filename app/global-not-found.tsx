@@ -1,5 +1,4 @@
 "use client";
-import NavbarV2 from "../components/ui/FuzzyText";
 import "./globals.css";
 import FuzzyText from "../components/ui/FuzzyText";
 import TextType from "../components/ui/TextType";

@@ -14,7 +14,7 @@ const Projects = () => {
 
       <div className="flex flex-col mt-12 gap-5 md:flex-row items-center justify-center mb-5">
         <ProjectCard
-          className="hover:scale-105"
+          className=" "
           techs={["HTML5", "CSS3", "TailwindCSS", "JavaScript", "React JS"]}
           name="Todo App"
           previewImage="/todo_preview.png"
@@ -29,7 +29,7 @@ const Projects = () => {
 
         <ProjectCard
           status={["completed"]}
-          className="hover:scale-105"
+          className=""
           techs={[
             "HTML5",
             "CSS3",
