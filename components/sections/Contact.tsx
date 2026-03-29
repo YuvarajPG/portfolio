@@ -82,7 +82,10 @@ const Contact = () => {
                             <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 text-blue-400">
                                 <Mail className="w-6 h-6" />
                             </div>
-                            <div>
+                            <div onClick={() => {
+                                navigator.clipboard.writeText("yuvar2978@gmail.com");
+                                alert("Email copied!");
+                            }} className="cursor-pointer">
                                 <p className="text-gray-400 text-sm">Email</p>
                                 <a href="mailto:yuvar2978@gmail.com" target="_blank" className="text-white text-lg hover:text-blue-400 transition-all">
                                     yuvar2978@gmail.com
