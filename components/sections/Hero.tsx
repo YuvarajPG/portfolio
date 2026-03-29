@@ -4,7 +4,7 @@ import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
 import githubLogo from "../../public/github.png";
-import instagramLogo from "../../public/instagram.png";
+// import instagramLogo from "../../public/instagram.png";
 import linkedinLogo from "../../public/linkedin.png";
 import location from "../../public/location.png";
 import resume from "../../public/resume.png";
@@ -64,7 +64,8 @@ const Main = () => {
                         </Link>
                     </>
 
-                    <>
+                    {/* instragaram logo and link */}
+                    {/*  <>
                         <Link
                             href="https://www.instagram.com/_yuva_raj_21/"
                             target="_blank"
@@ -74,11 +75,11 @@ const Main = () => {
                                 alt="Instagram Logo"
                                 width={30}
                             />
-                            {/* <span className="">
+                            <span className="">
                                     Instragram
-                                </span> */}
+                                </span>
                         </Link>
-                    </>
+                    </> */}
                     <>
                         <Link href="mailto:yuvar2978@gmail.com" target="_blank">
                             <Image

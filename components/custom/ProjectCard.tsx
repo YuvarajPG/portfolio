@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ProjectCard = ({
-    techs,
+    id,
+    activeId,
+    setActiveId,
     altImage1,
-    status=["ongoing"],
     altImage2,
-    altImage3,
+    techs,
+    status = ["ongoing"],
     name,
     previewImage,
     Text1,
@@ -22,11 +24,13 @@ const ProjectCard = ({
     btnStyle1,
     btnStyle2,
 }: {
-    techs?: string[];
     altImage1?: string;
-    status?: string[];
     altImage2?: string;
-    altImage3?: string;
+    id: number;
+    activeId: number | null;
+    setActiveId: (id: number | null) => void;
+    techs?: string[];
+    status?: string[];
     name: string;
     previewImage: string;
     Text1: string;
@@ -42,22 +46,21 @@ const ProjectCard = ({
 }) => {
     return (
         <div
-            className={`${className} mx-4 will-change-transform  text-white glass-card`}
+            onClick={() => setActiveId(activeId === id ? null : id)}
+            className={`glass-card ${activeId === id ? "focus:glass-active" : ""} ${className || ""} mx-4 my-2`}
         >
-            <div className="rounded-xl flex max-w-90 flex-col gap-4 py-4 max-[1158px]:max-h-130
-            ">
-
+            <div className="rounded-xl flex max-w-90 flex-col gap-4 py-4">
+                {/* IMAGE */}
                 <div className="h-55 relative rounded-2xl overflow-hidden group">
                     <Image
-                        loading="eager"
                         src={previewImage}
                         alt={name}
                         fill
-                        className="px-2 object-cover object-center my-auto transition-all duration-500 ease-out group-hover:blur-sm group-hover:scale-105"
+                        className="px-2 object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
-                        <span className="bg-black/70 text-white px-4 py-2 rounded-lg text-lg font-semibold">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                        <span className="bg-black/70 px-4 py-2 rounded-lg font-semibold">
                             <Link href={Link2} target={target}>
                                 Preview
                             </Link>
@@ -65,40 +68,40 @@ const ProjectCard = ({
                     </div>
                 </div>
 
-                <div className="flex flex-col pt-4 gap-1 relative">
-                    <div className="flex justify-between">
-                        <p className="text-xl font-bold px-4">{name}</p>
-                        {status.includes("completed") ?
-                            (
-                                <p className="text-white font-medium bg-green-500 rounded-xl px-2 me-4 max-h-7 flex justify-center items-center"><span>
-                                Completed</span></p>
-                            )
-                            :
-                            (
-                                <p className="text-white font-medium bg-yellow-500 rounded-xl px-2 me-4 max-h-7 flex justify-center items-center"><span>
-                                On Going</span></p>
-                            )
-                        }
-                        </div>
-                    <div className="flex gap-2 px-4 flex-col">
-                        <p className="text-sm text-muted-foreground">
-                            Technologies Used
-                        </p>
+                {/* TITLE */}
+                <div className="flex justify-between px-4 text-center">
+                    <p className="text-xl font-bold relative">{name}</p>
 
-                        <span className="flex gap-2 flex-wrap mt-2">
-                            {techs?.map((tech, index) => (
-                                <span
-                                    key={index}
-                                    className="bg-blue-500/80 px-2 py-1 rounded-md text-xs text-white font-semibold
-                                    hover:bg-blue-500 hover:scale-105 transition-all duration-200"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
+                    {status.includes("completed") ? (
+                        <span className="bg-green-500 px-2 rounded-xl text-sm py-1 font-medium">
+                            Completed
                         </span>
+                    ) : (
+                        <span className="bg-yellow-500 px-2 rounded-xl text-sm py-1 font-medium">
+                            On Going
+                        </span>
+                    )}
+                </div>
+
+                {/* TECH */}
+                <div className="px-4">
+                    <p className="text-sm text-muted-foreground">
+                        Technologies Used
+                    </p>
+
+                    <div className="flex gap-2 flex-wrap mt-2">
+                        {techs?.map((tech, i) => (
+                            <span
+                                key={i}
+                                className="bg-blue-500/80 px-2 py-1 rounded text-xs font-semibold hover:scale-105 transition"
+                            >
+                                {tech}
+                            </span>
+                        ))}
                     </div>
                 </div>
 
+                {/* BUTTONS */}
                 <div className="flex justify-around px-4 gap-2 flex-wrap mt-auto max-[908px]:flex-col">
                     {/* Github */}
                     <button
@@ -111,16 +114,16 @@ const ProjectCard = ({
                         >
                             {Text1}
                             {ImageBtn1.includes(".png") ||
-                                ImageBtn1.includes(".jpg") ||
-                                ImageBtn1.includes(".jpeg") ? (
+                            ImageBtn1.includes(".jpg") ||
+                            ImageBtn1.includes(".jpeg") ? (
                                 <Image
                                     src={ImageBtn1}
                                     width={40}
                                     height={40}
                                     // quality={100}
                                     alt={
-                                        altImage2?.trim()
-                                            ? altImage2
+                                        altImage1?.trim()
+                                            ? altImage1
                                             : "Button Icon"
                                     }
                                     className="w-5 h-5 transition-all duration-200 group-hover:scale-125 group-hover:rotate-6"
@@ -142,19 +145,18 @@ const ProjectCard = ({
                         >
                             {Text2}
                             {ImageBtn2.includes(".png") ||
-                                ImageBtn2.includes(".jpg") ||
-                                ImageBtn2.includes(".jpeg")
-                                ? (
+                            ImageBtn2.includes(".jpg") ||
+                            ImageBtn2.includes(".jpeg") ? (
                                 <Image
                                     src={ImageBtn2}
                                     width={20}
                                     height={20}
-                                    alt={altImage3?.trim() || "icon"}
+                                    alt={altImage2?.trim() || "icon"}
                                     className=""
                                 />
                             ) : (
-                                    <span className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110 ">
-                                        {ImageBtn2}
+                                <span className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110 ">
+                                    {ImageBtn2}
                                 </span>
                             )}
                         </a>

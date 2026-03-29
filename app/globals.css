@@ -32,7 +32,6 @@ body {
   }
 }
 
-
 /* 
 ---break---
 
@@ -171,7 +170,7 @@ body {
 @layer components {
   .card-glow {
     @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
-    @apply transition-all duration-300 shadow-lg;
+    @apply transition-all duration-300;
   }
 
   .card-glow:hover {
@@ -180,48 +179,49 @@ body {
     @apply scale-110;
   }
 
-  .card-glow:active {
-    @apply shadow-2xl shadow-cyan-900/50 scale-95 bg-white/20;
+  .card-active {
+    @apply shadow-2xl shadow-cyan-600 bg-white/20 scale-105;
+    transform: translateY(-4px);
   }
 }
 
-@media (hover: none) {
+/* @media (hover: none) {
   .card-glow:hover {
     box-shadow: none;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
   }
-}
-
+} */
 @layer components {
   .glass-card {
-    /* glass effect */
+    /* glass */
     @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
 
-    /* spacing + layout */
+    /* text */
     @apply text-white;
 
     /* animation */
     @apply transition-all duration-300;
 
-    @apply shadow-xs shadow-cyan-600;
+    /* visible base shadow */
+    @apply shadow-sm shadow-cyan-950;
   }
 
   .glass-card:hover {
-    @apply shadow-2xl  bg-white/20 scale-105;
+    @apply shadow-2xl drop-shadow-cyan-600 bg-white/20 scale-105;
     transform: translateY(-4px);
-    @apply shadow-2xl shadow-cyan-900/50;
   }
 
-  .glass-card:active {
-    @apply scale-105 shadow-2xl  bg-white/20;
-  }
+  /* .glass-active {
+    @apply shadow-2xl shadow-green-500 bg-white/20;
+    transform: translateY(-4px) scale(1.03);
+  } */
 }
 
 /* prevent fake hover on mobile */
-@media (hover: none) {
+/* @media (hover: none) {
   .glass-card:hover {
     box-shadow: none;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     transform: none;
   }
-}
+} */
