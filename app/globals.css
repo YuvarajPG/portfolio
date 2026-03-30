@@ -169,7 +169,7 @@ body {
 
 @layer components {
   .card-glow {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+    @apply bg-white/10 backdrop-blur-md shadow-lg shadow-white/10 rounded-2xl;
     @apply transition-all duration-300;
   }
 
@@ -194,7 +194,7 @@ body {
 @layer components {
   .glass-card {
     /* glass */
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+    @apply bg-white/10 backdrop-blur-sm shadow-lg shadow-white/10 rounded-2xl;
 
     /* text */
     @apply text-white;
@@ -202,17 +202,15 @@ body {
     /* animation */
     @apply transition-all duration-300;
 
-    /* visible base shadow */
-    @apply shadow-sm shadow-cyan-950;
   }
 
   .glass-card-completed:hover {
-    @apply shadow-lg shadow-emerald-500 scale-105;
+    @apply shadow-emerald-500 scale-105;
     transform: translateY(-4px);
   }
 
   .glass-card-ongoing:hover {
-    @apply shadow-lg shadow-amber-400 scale-105;
+    @apply shadow-amber-400 scale-105;
     transform: translateY(-4px);
   }
 
