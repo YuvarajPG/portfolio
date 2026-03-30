@@ -9,7 +9,7 @@ const Projects = () => {
 
     return (
         <section
-            className="min-h-dvh flex flex-col items-center mb-80 py-16 border-t border-white/20 justify-center"
+            className="min-h-dvh flex flex-col items-center py-16 border-t border-white/20 justify-center"
             id="Projects"
         >
             {/* TITLE */}
