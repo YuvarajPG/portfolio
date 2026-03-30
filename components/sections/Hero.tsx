@@ -43,7 +43,7 @@ const Main = () => {
                             className="h-6 w-6 absolute translate-y-2 mt-3 -translate-x-24 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5"
                         />
                     </div>
-                    <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in">
+                    <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in justify-center">
                         <>
                             <Link
                                 href="https://github.com/YuvarajPG"
@@ -104,6 +104,8 @@ const Main = () => {
                                     className="hover:cursor-pointer"
                                 />
                             </Link>
+                        </>
+                        <>
                             <Link href="/resume_v2_updated.pdf" target="_blank">
                                 <Image
                                     src={resume}
