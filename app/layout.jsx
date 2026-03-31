@@ -57,7 +57,7 @@ export default function Layout({ children }) {
   return (
     <html>
       <head>
-        <meta name="theme-color" content="#1d5ed8" />
+        <meta name="theme-color" content="#000000" />
         <link
           rel="stylesheet"
           type="text/css"
