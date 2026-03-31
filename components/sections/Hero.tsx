@@ -30,18 +30,25 @@ const Main = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                     viewport={{ once: false }}
                 >
-                    <div className="container flex flex-col items-center justify-center  m-0 p-0 animate-in fade-in duration-3000 ease-in">
+                    <div className="container flex flex-col items-center justify-center m-0 p-0 animate-in fade-in duration-3000 ease-in group">
                         <p className="text-white text-2xl max-[265px]:text-lg">
                             Web Developer
                         </p>
-                        <p className="text-white max-[265px]:text-sm">
-                            Salem,Tamil Nadu,India
+
+                        <p className="text-white max-[265px]:text-sm hover:cursor-pointer hover:underline-offset-4 hover:underline hover:decoration-linear active:decoration-embrald-400/50 transition-all duration-300 relative hover:decoration-wavy hover:decoration-emerald-400">
+                            <a
+                                href="https://www.google.com/maps/place/Salem,+Tamil+Nadu"
+                                target="_blank"
+                            >
+                                Salem, Tamil Nadu, India
+                            </a>
+
+                            <Image
+                                src={location}
+                                alt="Location"
+                                className="h-6 w-6 absolute -translate-y-9 mt-3 -translate-x-6.5 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5 transition-all duration-300 group-hover:scale-110"
+                            />
                         </p>
-                        <Image
-                            src={location}
-                            alt="Location"
-                            className="h-6 w-6 absolute translate-y-2 mt-3 -translate-x-24 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5"
-                        />
                     </div>
                     <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in justify-center">
                         <>
@@ -118,8 +125,8 @@ const Main = () => {
                     </div>
                     <a
                         href="/resume_v2_updated.pdf"
-                        download="Yuvaraj_Resume.pdf"
-                        className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-orange-700 px-4 mt-5 animate-in fade-in duration-150 ease-in block text-center hover:cursor-pointer hover:bg-orange-600 active:bg-orange-600 animate-in fade-in duration-3000 ease-in"
+                        download="Yuvaraj Resume.pdf"
+                        className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-linear-to-r from-purple-500 to-blue-600 px-4 mt-5 block text-center hover:cursor-pointer hover:bg-linear-to-l active:bg-green-600 animate-in fade-in ease-in duration-300"
                     >
                         Download CV
                     </a>

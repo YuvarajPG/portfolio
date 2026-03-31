@@ -37,9 +37,9 @@ const Skills = () => {
                 {skills.map((skill, index) => (
                     <motion.div
                         key={skill.id}
-                        initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+                        initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}    
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        viewport={{ once: false, margin: "-10px" }}
+                        viewport={{ once: false, amount: 0.1,margin: "-100px" }}
                         animate={{
                             opacity: activeId === null ? 1 : activeId === skill.id ? 1 : 0.4,
                             scale: activeId === skill.id ? 1.05 : 1,
@@ -48,7 +48,7 @@ const Skills = () => {
                             duration: isFast ? 0.3 : 0.6, 
                             delay: isFast ? index*0.1 : index * 0.15, 
                             type: "spring", 
-                            bounce: isFast ? 0.15 : 0.3 
+                            bounce:  0.3 
                         }}
                         className="cursor-pointer"
                     >
