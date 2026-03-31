@@ -52,12 +52,9 @@ const Skills = () => {
                         }}
                         className="cursor-pointer"
                     >
-                        <CardSection
-                            id={skill.id}
+                        <CardSection                            
                             name={skill.name}
                             logo={skill.logo}
-                            activeId={activeId}
-                            setActiveId={setActiveId}
                         />
                     </motion.div>
                 ))}
