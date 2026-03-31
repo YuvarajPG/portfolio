@@ -42,13 +42,16 @@ const AboutMe = () => {
                         </h3>
 
                         <p className="text-white/80 text-lg leading-relaxed mb-6">
-                            I&apos;m an aspiring developer who enjoys building modern, responsive web applications with a strong focus on clean design and performance.
-                            I work with React, Tailwind CSS, and JavaScript to create user-friendly interfaces and real-world projects.
+                            I&apos;m an aspiring developer who enjoys building
+                            modern, responsive web applications with a strong
+                            focus on clean design and performance. I work with
+                            React, Tailwind CSS, and JavaScript to create
+                            user-friendly interfaces and real-world projects.
                         </p>
 
                         {/* EDUCATION CARD */}
                         <div className="bg-white/5 shadow-lg shadow-white/10 rounded-xl p-5 backdrop-blur-sm hover:shadow-purple-400 transition-all duration-300 hover:scale-105 active:scale-95 text-left">
-                            <h4 className="text-white font-semibold text-2xl mb-2">
+                            <h4 className="text-white font-semibold text-2xl mb-2 underline underline-offset-4">
                                 Education
                             </h4>
 
@@ -61,8 +64,16 @@ const AboutMe = () => {
                             </p>
 
                             <ul className="text-white/70 text-sm space-y-1">
-                                <li>• CGPA: <span className="text-white font-medium">8.29</span></li>
-                                <li>• Focused on software development & modern web technologies</li>
+                                <li>
+                                    • CGPA:{" "}
+                                    <span className="text-white font-medium">
+                                        8.29
+                                    </span>
+                                </li>
+                                <li>
+                                    • Focused on software development & modern
+                                    web technologies
+                                </li>
                                 <li>• Hands-on experience through projects</li>
                             </ul>
                             {/* SCHOOL */}
@@ -81,7 +92,6 @@ const AboutMe = () => {
                                 </ul>
                             </div>
                         </div>
-
                     </motion.div>
                     {/* RIGHT SIDE */}
                     <motion.div
@@ -91,8 +101,7 @@ const AboutMe = () => {
                         viewport={{ once: false }}
                         className="flex justify-center"
                     >
-                        <div className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-[4/5]"
-                        >
+                        <div className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-[4/5]">
                             <Image
                                 src="/profile.jpg"
                                 alt="Yuvaraj profile"
