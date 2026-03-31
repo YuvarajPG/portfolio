@@ -50,7 +50,7 @@ const AboutMe = () => {
                         </p>
 
                         {/* EDUCATION CARD */}
-                        <div className="bg-gray-800/80 shadow-lg shadow-white/10 rounded-xl p-5 backdrop-blur-sm hover:shadow-purple-400 transition-all duration-300 hover:scale-105 active:scale-95 text-left">
+                        <div className="bg-gray-800/80 shadow-lg shadow-white/50 active:shadow-2xl active:scale-95 rounded-xl p-5  hover:shadow-purple-400 hover:scale-105 backdrop-blur-sm transition-all duration-300 text-left border border-white/20 ">
                             <h4 className="text-white font-semibold text-2xl mb-2 underline underline-offset-4">
                                 Education
                             </h4>

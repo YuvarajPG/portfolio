@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import Image from "next/image";
 
 const CardSection = ({
@@ -16,54 +17,46 @@ const CardSection = ({
     activeId: number | null;
     setActiveId: (id: number | null) => void;
 }) => {
-    
+    const isActive = activeId === id;
+
     return (
         <div
-            className={`card-glow ${activeId === id ? "card-active" : ""}backdrop-blur-md rounded-xl gap-4 p-2 justify-center  flex flex-col items-center
-            text-center h-auto card-glow`}
             onClick={() => setActiveId(activeId === id ? null : id)}
+            className={`card-glow ${
+                isActive ? "card-active" : ""
+            } backdrop-blur-md p-2 flex items-center justify-center active:scale-105`}
         >
-            {link ? (
-                <a
-                    href={link}
-                    className="text-blue-500 hover:underline mt-2 focus:outline-none focus:ring-0"
-                >
-                    <div className="bg-white pt-4 pb-2 rounded-lg shadow-sm border-1.5 border-black w-25">
-                        <div className="flex w-16 h-16 bg-gray-200  rounded-full items-center justify-center mx-auto">
-                            {logo && name !== undefined ? (
-                                <Image
-                                    width={32}
-                                    height={32}
-                                    src={logo}
-                                    alt={name}
-                                    className="items-center"
-                                />
-                            ) : null}
-                        </div>
-                        <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white px-2">
-                            {name}
-                        </h3>
-                    </div>
-                </a>
-            ) : (
-                /* for the skill card the link always false so use this one for the change */
-                <div className="bg-white pt-4 pb-2 rounded-lg  border-black  min-h-37.5 w-25 flex flex-col">
-                    <div className="flex w-16 h-16 bg-gray-200  rounded-full items-center justify-center mx-auto">
-                        {logo && name !== undefined ? (
-                            <Image
-                                width={32}
-                                height={32}
-                                src={logo}
-                                alt={name}
-                                className="items-center"
-                            />
-                        ) : null}
-                    </div>
-                    <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white px-2">
-                        {name}
-                    </h3>
+            {/* INNER CARD */}
+            <div
+                className={`w-28 h-36 flex flex-col items-center justify-between py-4 rounded-xl cursor-pointerbg-gray-800/80 backdrop-blur-sm border border-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ${isActive ? "ring-1 ring-white/30" : ""}`}
+            >
+                {/* ICON */}
+                <div className="flex w-14 h-14 bg-white/10 rounded-full items-center justify-center">
+                    {logo && name && (
+                        <Image width={28} height={28} src={logo} alt={name} />
+                    )}
                 </div>
-            )}
+
+                {/* TEXT */}
+                <h3
+                    className="text-md font-semibold text-white/90
+                    text-center px-2 leading-snug tracking-wide"
+                >
+                    {name}
+                </h3>
+
+                {/* LINK (optional) */}
+                {link && (
+                    <a
+                        href={link}
+                        target="_blank"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[11px] text-white/60 hover:text-white/90 transition"
+                    >
+                        Open
+                    </a>
+                )}
+            </div>
         </div>
     );
 };

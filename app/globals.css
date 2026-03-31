@@ -169,15 +169,14 @@ body {
 
 @layer components {
   .card-glow {
-    @apply bg-white/10 backdrop-blur-md shadow-lg shadow-white/10 rounded-2xl;
+    @apply bg-white/20 backdrop-blur-md shadow-lg shadow-white/50 rounded-2xl;
     @apply transition-all duration-300;
   }
 
-  .card-glow:hover {
-    @apply shadow-2xl shadow-cyan-950 bg-white/20;
-    transform: translateY(-4px);
-    @apply scale-110;
-  }
+  /* .card-glow:hover {
+  @apply shadow-2xl shadow-cyan-950;
+  transform: translateY(-4px);
+} */
 
   /* .card-active {
     @apply shadow-2xl shadow-cyan-600 bg-white/20 scale-105;
@@ -194,7 +193,7 @@ body {
 @layer components {
   .glass-card {
     /* glass */
-    @apply bg-white/10 backdrop-blur-sm shadow-lg shadow-white/10 rounded-2xl;
+    @apply bg-white/10 backdrop-blur-sm shadow-lg shadow-white/50 rounded-2xl;
 
     /* text */
     @apply text-white;
@@ -210,12 +209,12 @@ body {
   }
 
   .glass-card-ongoing:hover {
-    @apply shadow-amber-400 scale-105;
+    @apply shadow-amber-400 scale-105; ;
     transform: translateY(-4px);
   }
 
-  /* .glass-active {
-    @apply shadow-2xl shadow-green-500 bg-white/20;
+  /* .glass-active{
+    @apply shadow-2xl shadow-white/50 bg-purple-500;
     transform: translateY(-4px) scale(1.03);
   } */
 }
