@@ -67,7 +67,7 @@ const AboutMe = () => {
                                 <li>
                                     • CGPA:{" "}
                                     <span className="text-white font-medium">
-                                        8.29
+                                        8.29 (up to Semester 5)
                                     </span>
                                 </li>
                                 <li>

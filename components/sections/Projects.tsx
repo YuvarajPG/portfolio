@@ -71,6 +71,7 @@ const Projects = () => {
                             "JavaScript",
                             "TypeScript",
                             "React JS",
+                            "Next JS",
                         ]}
                         name="Portfolio Website"
                         previewImage="/porflio_2.png"

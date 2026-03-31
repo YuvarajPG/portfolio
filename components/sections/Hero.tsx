@@ -35,7 +35,7 @@ const Main = () => {
                             Web Developer
                         </p>
 
-                        <p className="text-white max-[265px]:text-sm hover:cursor-pointer hover:underline-offset-4 hover:underline hover:decoration-linear active:decoration-embrald-400/50 transition-all duration-300 relative hover:decoration-wavy hover:decoration-emerald-400">
+                        <p className="text-white max-[265px]:text-sm hover:cursor-pointer hover:underline-offset-4 hover:underline hover:decoration-linear active:decoration-embrald-400/50 transition-all duration-300 relative  hover:decoration-emerald-400">
                             <a
                                 href="https://www.google.com/maps/place/Salem,+Tamil+Nadu"
                                 target="_blank"
@@ -46,45 +46,46 @@ const Main = () => {
                             <Image
                                 src={location}
                                 alt="Location"
-                                className="h-6 w-6 absolute -translate-y-9 mt-3 -translate-x-6.5 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5 transition-all duration-300 group-hover:scale-110"
+                                className="h-6 w-6 absolute -translate-y-9.75 mt-3 -translate-x-6.5 max-[265px]:-translate-x-20.25 max-[265px]:h-5 max-[265px]:w-5 transition-all duration-300 group-hover:scale-110"
                             />
                         </p>
                     </div>
-                    <div className="flex mt-3 gap-2 animate-in fade-in duration-3000 ease-in justify-center">
-                        <>
-                            <Link
-                                href="https://github.com/YuvarajPG"
-                                target="_blank"
-                            >
-                                <Image
-                                    src={githubLogo}
-                                    alt="GitHub Logo"
-                                    width={30}
-                                />
-                                {/* <span className="">
+                    <div className="flex flex-col animate-in fade-in duration-3000 ease-in">
+                        <div className="flex mt-3 gap-2 justify-center">
+                            <>
+                                <Link
+                                    href="https://github.com/YuvarajPG"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src={githubLogo}
+                                        alt="GitHub Logo"
+                                        width={30}
+                                    />
+                                    {/* <span className="">
                                     GitHub
                                 </span> */}
-                            </Link>
-                        </>
+                                </Link>
+                            </>
 
-                        <>
-                            <Link
-                                href="https://www.linkedin.com/in/yuvarajpg"
-                                target="_blank"
-                            >
-                                <Image
-                                    src={linkedinLogo}
-                                    alt="LinkedIn Logo "
-                                    width={30}
-                                />
-                                {/* <span className="">
+                            <>
+                                <Link
+                                    href="https://www.linkedin.com/in/yuvarajpg"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src={linkedinLogo}
+                                        alt="LinkedIn Logo "
+                                        width={30}
+                                    />
+                                    {/* <span className="">
                                     Linkedin
                                 </span> */}
-                            </Link>
-                        </>
+                                </Link>
+                            </>
 
-                        {/* instragaram logo and link */}
-                        {/*  <>
+                            {/* instragaram logo and link */}
+                            {/*  <>
                         <Link
                             href="https://www.instagram.com/_yuva_raj_21/"
                             target="_blank"
@@ -99,37 +100,43 @@ const Main = () => {
                                 </span>
                         </Link>
                     </> */}
-                        <>
-                            <Link
-                                href="mailto:yuvar2978@gmail.com"
-                                target="_blank"
+                            <>
+                                <Link
+                                    href="mailto:yuvar2978@gmail.com"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src={email}
+                                        alt="Email Icon"
+                                        width={30}
+                                        className="hover:cursor-pointer"
+                                    />
+                                </Link>
+                            </>
+                            <>
+                                <Link
+                                    href="/resume_v2_updated.pdf"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src={resume}
+                                        alt="Resume Icon"
+                                        width={30}
+                                        className="hover:cursor-pointer"
+                                    />
+                                </Link>
+                            </>
+                        </div>
+                        <span>
+                            <a
+                                href="/resume_v2_updated.pdf"
+                                download="Yuvaraj Resume.pdf"
+                                className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-linear-to-r from-purple-500 to-blue-600 px-4 mt-5 block text-center hover:cursor-pointer hover:bg-linear-to-l active:bg-green-600 animate-in fade-in ease-in duration-300 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-500"
                             >
-                                <Image
-                                    src={email}
-                                    alt="Email Icon"
-                                    width={30}
-                                    className="hover:cursor-pointer"
-                                />
-                            </Link>
-                        </>
-                        <>
-                            <Link href="/resume_v2_updated.pdf" target="_blank">
-                                <Image
-                                    src={resume}
-                                    alt="Resume Icon"
-                                    width={30}
-                                    className="hover:cursor-pointer"
-                                />
-                            </Link>
-                        </>
+                                Download CV
+                            </a>
+                        </span>
                     </div>
-                    <a
-                        href="/resume_v2_updated.pdf"
-                        download="Yuvaraj Resume.pdf"
-                        className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-linear-to-r from-purple-500 to-blue-600 px-4 mt-5 block text-center hover:cursor-pointer hover:bg-linear-to-l active:bg-green-600 animate-in fade-in ease-in duration-300"
-                    >
-                        Download CV
-                    </a>
                 </motion.div>
             </div>
         </>
