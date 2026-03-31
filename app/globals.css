@@ -167,22 +167,23 @@ body {
   scrollbar-color: var(--color-primary) var(--color-background);
 }
 
-@layer components {
+/* @layer components {
   .card-glow {
     @apply bg-white/20 backdrop-blur-md shadow-lg shadow-white/50 rounded-2xl;
     @apply transition-all duration-300;
   }
 
-  /* .card-glow:hover {
-  @apply shadow-2xl shadow-cyan-950;
+  .card-glow:hover {
+    @apply shadow-cyan-600 scale-105;
   transform: translateY(-4px);
 } */
 
   /* .card-active {
     @apply shadow-2xl shadow-cyan-600 bg-white/20 scale-105;
     transform: translateY(-4px);
-  } */
-}
+} 
+}*/
+
 
 /* @media (hover: none) {
   .card-glow:hover {

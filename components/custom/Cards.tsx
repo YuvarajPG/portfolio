@@ -6,52 +6,48 @@ const CardSection = ({
     name,
     logo,
     link,
-    id,
-    activeId,
-    setActiveId,
 }: {
     name?: string;
     logo?: string;
     link?: string;
-    id: number;
-    activeId: number | null;
-    setActiveId: (id: number | null) => void;
 }) => {
-    const isActive = activeId === id;
-
     return (
         <div
-            onClick={() => setActiveId(activeId === id ? null : id)}
-            className={`card-glow ${
-                isActive ? "card-active" : ""
-            } backdrop-blur-md p-2 flex items-center justify-center active:scale-105`}
+            className="bg-white/20 backdrop-blur-md shadow-lg shadow-white/50 rounded-2xl p-2 
+            flex flex-col items-center justify-center text-center transition-all duration-300
+            group shadow-lg shadow-white/50 active:shadow-2xl active:scale-95 hover:shadow-purple-400 hover:scale-105"
         >
             {/* INNER CARD */}
             <div
-                className={`w-28 h-36 flex flex-col items-center justify-between py-4 rounded-xl cursor-pointerbg-gray-800/80 backdrop-blur-sm border border-white/20 hover:scale-105 active:scale-95 transition-all duration-300 ${isActive ? "ring-1 ring-white/30" : ""}`}
+                className="bg-white pt-4 pb-2 min-h-[150px] w-25 flex flex-col rounded-xl border border-white/20 transition-all duration-300"
             >
                 {/* ICON */}
-                <div className="flex w-14 h-14 bg-white/10 rounded-full items-center justify-center">
+                <div
+                    className="flex w-16 h-16 bg-gray-200 rounded-full 
+                    items-center justify-center mx-auto transition-all duration-300"
+                >
                     {logo && name && (
-                        <Image width={28} height={28} src={logo} alt={name} />
+                        <Image
+                            width={32}
+                            height={32}
+                            src={logo}
+                            alt={name}
+                        />
                     )}
                 </div>
 
                 {/* TEXT */}
-                <h3
-                    className="text-md font-semibold text-white/90
-                    text-center px-2 leading-snug tracking-wide"
-                >
+                <h3 className="mt-2 text-lg font-semibold text-gray-900 text-center px-2">
                     {name}
                 </h3>
 
-                {/* LINK (optional) */}
+                {/* LINK */}
                 {link && (
                     <a
                         href={link}
                         target="_blank"
                         onClick={(e) => e.stopPropagation()}
-                        className="text-[11px] text-white/60 hover:text-white/90 transition"
+                        className="text-xs text-blue-500 mt-1 hover:underline"
                     >
                         Open
                     </a>
