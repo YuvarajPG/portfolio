@@ -3,40 +3,41 @@ import { motion } from "framer-motion";
 
 const NavbarV2 = () => {
     return (
-        <motion.div 
-            initial={{ y: -100, opacity: 0 }}
+        <motion.div
+            initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
-            className="w-full flex justify-center fixed top-4 left-0 z-50 px-2"
+            transition={{
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100,
+                damping: 18,
+                delay: 0.2,
+            }}
+            className="fixed top-3 sm:top-4 left-0 w-full flex justify-center z-50 px-2"
         >
-            <ul className="flex items-center justify-between gap-2 sm:gap-3 px-2 sm:px-3 py-2 rounded-full backdrop-blur-lg border border-white/10 bg-black/30 text-gray-300 shadow-lg max-w-[95vw] overflow-hidden max-[265px]:gap-0">
-                <li>
+            <nav
+                className="flex items-center gap-1 sm:gap-2 md:gap-3 
+                px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 
+                rounded-full 
+                backdrop-blur-xl bg-black/40 border border-white/10 
+                shadow-lg shadow-black/40
+                max-w-[95vw] sm:max-w-max
+                no-scrollbar"
+            >
+                {[
+                    { name: "Home", link: "#hero" },
+                    { name: "Projects", link: "#Projects" },
+                    { name: "About", link: "#About" },
+                ].map((item, i) => (
                     <a
-                        href="#hero"
-                        className="px-2 sm:px-3 py-1 rounded-full font-medium transition-all duration-200 hover:scale-105 hover:bg-white/10 hover:text-white whitespace-nowrap"
+                        key={i}
+                        href={item.link}
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium rounded-full whitespace-nowrap text-gray-300 transition-all duration-300 hover:text-white hover:bg-white/10 hover:scale-105 active:scale-95"
                     >
-                        Home
+                        {item.name}
                     </a>
-                </li>
-
-                <li>
-                    <a
-                        href="#Projects"
-                        className="px-2 sm:px-3 py-1 rounded-full font-medium transition-all duration-200 hover:scale-105 hover:bg-white/10 hover:text-white whitespace-nowrap"
-                    >
-                        Projects
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="#About"
-                        className="px-2 sm:px-3 py-1 rounded-full font-medium transition-all duration-200 hover:scale-105 hover:bg-white/10 hover:text-white whitespace-nowrap"
-                    >
-                        About
-                    </a>
-                </li>
-            </ul>
+                ))}
+            </nav>
         </motion.div>
     );
 };

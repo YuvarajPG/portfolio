@@ -50,7 +50,7 @@ const AboutMe = () => {
                         </p>
 
                         {/* EDUCATION CARD */}
-                        <div className="bg-gray-800/80 shadow-lg shadow-white/50 active:shadow-2xl active:shadow-emerald-400/50 active:scale-95 rounded-xl p-5  hover:shadow-emerald-400 hover:scale-105 backdrop-blur-sm transition-all duration-300 text-left border border-white/20 ">
+                        <div className="bg-gray-800/80 shadow-lg shadow-white/50 active:shadow-2xl active:shadow-purple-400/50 active:scale-95 rounded-xl p-5  hover:shadow-purple-400 hover:scale-105 backdrop-blur-sm transition-all duration-300 text-left border border-white/20 ">
                             <h4 className="text-white font-semibold text-2xl mb-2 underline underline-offset-4">
                                 Education
                             </h4>
@@ -101,13 +101,13 @@ const AboutMe = () => {
                         viewport={{ once: false }}
                         className="flex justify-center"
                     >
-                        <div className="relative w-65 sm:w-75 md:w-85 lg:w-95 xl:w-105 aspect-4/5">
+                        <div className="relative w-65 sm:w-75 md:w-85 lg:w-95 xl:w-105 max-[290px]:w-57 max-[265px]:w-55 max-[245px]:w-47 max-[218px]:w-42 aspect-4/5 ">
                             <Image
                                 src="/profile.jpg"
                                 alt="Yuvaraj profile"
                                 fill
-                                sizes="(max-width: 640px) 260px,(max-width: 768px) 300px,(max-width: 1024px) 340px,(max-width: 1280px) 380px,420px"
-                                className="rounded-2xl object-cover hover:shadow-emerald-400 transition-all duration-300 hover:scale-105 shadow-lg shadow-white/50 active:shadow-2xl active:scale-95 active:shadow-emerald-400/50  border border-white/20"
+                                sizes=""
+                                className="rounded-2xl object-cover hover:shadow-purple-400 transition-all duration-300 hover:scale-105 shadow-lg shadow-white/50 active:shadow-2xl active:scale-95 active:shadow-purple-400/50  border border-white/20"
                             />
                         </div>
                     </motion.div>

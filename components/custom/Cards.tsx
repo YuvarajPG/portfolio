@@ -15,11 +15,11 @@ const CardSection = ({
         <div
             className="bg-white/20 backdrop-blur-md shadow-lg shadow-white/50 rounded-2xl p-2 
             flex flex-col items-center justify-center text-center transition-all duration-300
-            group shadow-lg shadow-white/50 active:shadow-2xl active:scale-95 hover:shadow-purple-400 hover:scale-105"
+            group active:shadow-2xl active:scale-95 hover:shadow-purple-400 hover:scale-105"
         >
             {/* INNER CARD */}
             <div
-                className="bg-white pt-4 pb-2 min-h-[150px] w-25 flex flex-col rounded-xl border border-white/20 transition-all duration-300"
+                className="bg-white pt-4 pb-2 min-h-37.5 w-25 flex flex-col rounded-xl border border-white/20 transition-all duration-300"
             >
                 {/* ICON */}
                 <div
