@@ -22,6 +22,8 @@ const Projects = () => {
             {/* PROJECTS */}
             <div className="flex flex-col mt-12 gap-10 md:flex-row items-center justify-center mb-5">
                 {/* CARD 1 */}
+
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -52,13 +54,14 @@ const Projects = () => {
                     />
                 </motion.div>
 
-                {/* CARD 2 */}
+                
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                >
+                    >
                     <ProjectCard
                         id={2}
                         activeId={activeId}
