@@ -4,7 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import Image from 'next/image';
+
 gsap.registerPlugin(ScrollTrigger);
+
+interface TechNode {
+    name: string;
+    src: string;
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    radius: number;
+    mass: number;
+}
 
 // Data derived strictly from public/images/logos
 const TECH_ITEMS = [
@@ -28,7 +41,7 @@ export default function Technologies() {
     const [isMobile, setIsMobile] = useState(false);
 
     // Refs for physics state to avoid re-renders during animation loop
-    const nodesRef = useRef<any[]>([]);
+    const nodesRef = useRef<TechNode[]>([]);
     const dragRef = useRef<{ active: boolean; index: number; startX: number; startY: number }>({
         active: false, index: -1, startX: 0, startY: 0
     });
@@ -72,7 +85,7 @@ export default function Technologies() {
         resize();
         window.addEventListener('resize', resize);
 
-        const onMouseDown = (e: MouseEvent) => {
+        const onMouseDown = (e: { clientX: number; clientY: number }) => {
             if (!containerRef.current) return;
             const rect = containerRef.current.getBoundingClientRect();
             const mx = e.clientX - rect.left;
@@ -90,7 +103,7 @@ export default function Technologies() {
             });
         };
 
-        const onMouseMove = (e: MouseEvent) => {
+        const onMouseMove = (e: { clientX: number; clientY: number }) => {
             if (!containerRef.current) return;
             const rect = containerRef.current.getBoundingClientRect();
             mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
@@ -112,12 +125,12 @@ export default function Technologies() {
         // Attach listeners to container for better DX (instead of window or canvas)
         const container = containerRef.current;
         if (container) {
-            container.addEventListener('mousedown', onMouseDown);
-            window.addEventListener('mousemove', onMouseMove);
+            container.addEventListener('mousedown', onMouseDown as unknown as EventListener);
+            window.addEventListener('mousemove', onMouseMove as unknown as EventListener);
             window.addEventListener('mouseup', onMouseUp);
             // Add minimal touch support too
-            container.addEventListener('touchstart', (e) => onMouseDown({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY } as any), { passive: true });
-            window.addEventListener('touchmove', (e) => onMouseMove({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY } as any), { passive: true });
+            container.addEventListener('touchstart', (e) => onMouseDown({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY }), { passive: true });
+            window.addEventListener('touchmove', (e) => onMouseMove({ clientX: e.touches[0].clientX, clientY: e.touches[0].clientY }), { passive: true });
             window.addEventListener('touchend', onMouseUp, { passive: true });
         }
 
@@ -292,7 +305,7 @@ export default function Technologies() {
             {/* Centered Title */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4">
                 <h2 className="tech-bg-title text-[7vw] md:text-[5vw] lg:text-[3vw] font-bold text-[#ededed] opacity-10 tracking-tighter text-center leading-tight md:leading-none">
-                    Technologies<br />I've worked with
+                    Technologies<br />I&apos;ve worked with
                 </h2>
             </div>
 
@@ -304,7 +317,7 @@ export default function Technologies() {
                         id={`node-icon-${i}`}
                         className={`absolute top-0 left-0 p-1.5 md:p-3 lg:p-5 bg-linear-to-br from-[#333] to-[#222] border border-white/10 rounded-full shadow-2xl flex items-center justify-center will-change-transform ${isMobile ? 'w-9 h-9' : 'w-28 h-28'}`}
                     >
-                        <img src={item.src} alt={item.name} className="w-full h-full object-contain pointer-events-none drop-shadow-md select-none" draggable={false} />
+                        <Image src={item.src} alt={item.name} width={112} height={112} className="w-full h-full object-contain pointer-events-none drop-shadow-md select-none" draggable={false} />
                     </div>
                 ))}
             </div>

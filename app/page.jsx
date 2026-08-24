@@ -10,7 +10,6 @@ import Contact from "../components/sections/Contact";
 
 const Page = () => {
     return (
-        
             <div className="overflow-hidden">
                 <Main />
                 <AboutMe />

@@ -12,12 +12,12 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="flex space-x-4 text-lg">
-                        <a
+                        <Link
                             href="/"
                             className="hover:text-blue-500"
                         >
                             Home
-                        </a>
+                        </Link>
                         <Link
                             href="/projects"
                             className="hover:text-blue-500"
