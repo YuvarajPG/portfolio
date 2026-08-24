@@ -97,7 +97,7 @@ export const ProjectIndex = () => {
                 className="flex-1"
               >
                 <MagneticButton strength={0.2} className="w-full">
-                  <div className="btn-primary w-full py-2.5 font-mono text-xs uppercase font-bold text-center cursor-pointer">
+                  <div className="btn-primary w-full py-2.5 font-mono text-xs uppercase font-bold text-center cursor-pointer px-3">
                     Live Demo
                   </div>
                 </MagneticButton>
