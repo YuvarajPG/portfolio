@@ -1,146 +1,80 @@
 "use client";
-import { Spotlight } from "../ui/spotlight-new";
-import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
-import Image from "next/image";
-import Link from "next/link";
-import githubLogo from "../../public/github.png";
-// import instagramLogo from "../../public/instagram.png";
-import linkedinLogo from "../../public/linkedin.png";
-import location from "../../public/location.png";
-import resume from "../../public/resume.png";
-import email from "../../public/email.png";
+
+import React from "react";
 import { motion } from "framer-motion";
+import { DEVELOPER_INFO } from "@/data/portfolio";
+import { TextReveal } from "@/components/motion/TextReveal";
+import { Skiper42 } from "@/components/ui/skiper-ui/skiper42";
+import { Skiper68TypingText } from "@/components/ui/skiper-ui/skiper68";
+import { AnimatedLink } from "@/components/motion/AnimatedLink";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
-const Main = () => {
-    const words = [{ text: "Hello! I'm Yuvaraj" }];
-    return (
-        <>
-            <div
-                className="min-h-screen flex flex-col items-center justify-center bg-black/96 antialiased bg-grid-white/[0.02] overflow-hidden relative"
-                id="hero"
-            >
-                <Spotlight />
-                <TypewriterEffectSmooth
-                    words={words}
-                    className="text-white h-auto text-3xl flex justify-center sm:text-4xl w-max m-0 max-[270px]:text-2xl max-[235px]:text-[22px]"
-                />
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    viewport={{ once: false }}
-                >
-                    <div className="container flex flex-col items-center justify-center m-0 p-0 animate-in fade-in duration-3000 ease-in group">
-                        <p className="text-white text-2xl max-[270px]:text-lg max-[235px]:text-[18px]">
-                            Web Developer
-                        </p>
+export const Hero = () => {
+  const scrollToProjects = () => {
+    const el = document.getElementById("projects");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-                        <p className="text-white max-[270px]:text-sm hover:cursor-pointer hover:underline-offset-4 hover:underline hover:decoration-linear active:decoration-purple-400/50 transition-all duration-300 relative  hover:decoration-purple-400">
-                            <a
-                                href="https://www.google.com/maps/place/Salem,+Tamil+Nadu"
-                                target="_blank"
-                            >
-                                Salem, Tamil Nadu, India
-                            </a>
+  return (
+    <section
+      id="hero"
+      className="relative min-h-[85vh] flex flex-col justify-end pt-36 pb-16 px-6 sm:px-12 border-b border-theme max-w-7xl mx-auto space-y-8"
+    >
+      {/* Category Eyebrow with Skiper68 Typing Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-xs font-mono tracking-widest text-theme-muted uppercase"
+      >
+        <Skiper68TypingText text={DEVELOPER_INFO.role} speed={50} delay={600} />
+      </motion.div>
 
-                            <Image
-                                src={location}
-                                alt="Location"
-                                className="h-6 w-6 absolute -translate-y-9.75 mt-3 -translate-x-6.5 max-[265px]:-translate-x-5.5 max-[265px]:-translate-y-8.75 max-[265px]:h-5 max-[265px]:w-5 transition-all duration-300 group-hover:scale-110"
-                            />
-                        </p>
-                    </div>
-                    <div className="flex flex-col animate-in fade-in duration-3000 ease-in">
-                        <div className="flex mt-3 gap-2 justify-center">
-                            <>
-                                <Link
-                                    href="https://github.com/YuvarajPG"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src={githubLogo}
-                                        alt="GitHub Logo"
-                                        width={30}
-                                    />
-                                    {/* <span className="">
-                                    GitHub
-                                </span> */}
-                                </Link>
-                            </>
+      {/* Multi-Line Physical Text Reveal for Hero Name */}
+      <TextReveal
+        lines={["YUVARAJ", "PG"]}
+        delay={0.2}
+        className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-theme-main leading-[0.95] tracking-[0.02em]"
+        lineClassName="block text-theme-main"
+      />
 
-                            <>
-                                <Link
-                                    href="https://www.linkedin.com/in/yuvarajpg"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src={linkedinLogo}
-                                        alt="LinkedIn Logo "
-                                        width={30}
-                                    />
-                                    {/* <span className="">
-                                    Linkedin
-                                </span> */}
-                                </Link>
-                            </>
+      {/* Short Statement Tagline */}
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.45 }}
+        className="max-w-2xl text-lg sm:text-xl text-theme-muted font-normal leading-relaxed"
+      >
+        {DEVELOPER_INFO.tagline}
+      </motion.p>
 
-                            {/* instragaram logo and link */}
-                            {/*  <>
-                        <Link
-                            href="https://www.instagram.com/_yuva_raj_21/"
-                            target="_blank"
-                        >
-                            <Image
-                                src={instagramLogo}
-                                alt="Instagram Logo"
-                                width={30}
-                            />
-                            <span className="">
-                                    Instragram
-                                </span>
-                        </Link>
-                    </> */}
-                            <>
-                                <Link
-                                    href="mailto:yuvar2978@gmail.com"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src={email}
-                                        alt="Email Icon"
-                                        width={30}
-                                        className="hover:cursor-pointer"
-                                    />
-                                </Link>
-                            </>
-                            <>
-                                <Link
-                                    href="/resume_v2_updated.pdf"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src={resume}
-                                        alt="Resume Icon"
-                                        width={30}
-                                        className="hover:cursor-pointer"
-                                    />
-                                </Link>
-                            </>
-                        </div>
-                        <span>
-                            <a
-                                href="/resume_v2_updated.pdf"
-                                download="Yuvaraj Resume.pdf"
-                                className="py-1.5 rounded-full font-medium transition-all hover:scale-105 z-99 text-white bg-linear-to-r from-purple-500 to-blue-600 px-4 mt-5 block text-center hover:cursor-pointer hover:bg-linear-to-l active:bg-green-600 animate-in fade-in ease-in duration-300 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-500"
-                            >
-                                Download CV
-                            </a>
-                        </span>
-                    </div>
-                </motion.div>
-            </div>
-        </>
-    );
+      {/* Action Links & Social CTAs */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="flex flex-wrap items-center gap-6 pt-4 font-mono text-xs uppercase tracking-wider"
+      >
+        <div onClick={scrollToProjects} className="inline-block cursor-pointer">
+          <Skiper42>
+            View Work
+          </Skiper42>
+        </div>
+
+        <AnimatedLink href={DEVELOPER_INFO.socials.github} external showArrow={false}>
+          <div className="flex items-center gap-2">
+            <GithubIcon className="w-4 h-4" />
+            <span>GitHub</span>
+          </div>
+        </AnimatedLink>
+
+        <AnimatedLink href={DEVELOPER_INFO.socials.linkedin} external showArrow={false}>
+          <div className="flex items-center gap-2">
+            <LinkedinIcon className="w-4 h-4" />
+            <span>LinkedIn</span>
+          </div>
+        </AnimatedLink>
+      </motion.div>
+    </section>
+  );
 };
-
-export default Main;

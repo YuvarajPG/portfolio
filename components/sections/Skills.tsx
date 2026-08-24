@@ -1,66 +1,80 @@
 "use client";
-import { useState } from "react";
-import CardSection from "../custom/Cards";
-import { motion } from 'framer-motion';
 
-const Skills = () => {
-    const [activeId, setActiveId] = useState<number | null>(null);
-    const [isFast, setIsFast] = useState(false);
+import React, { useState } from "react";
+import { SKILLS_CATEGORIES } from "@/data/portfolio";
+import { SectionHeading } from "@/components/primitives/SectionHeading";
+import { Reveal } from "@/components/primitives/Reveal";
+import { motion, useReducedMotion } from "framer-motion";
 
-    const skills = [
-        { id: 1, name: "HTML5", logo: "/html-5.png" },
-        { id: 2, name: "CSS", logo: "/css.png" },
-        { id: 3, name: "Tailwind CSS", logo: "/TailwindCSS.png" },
-        { id: 4, name: "Bootstrap", logo: "/bootstrap.png" },
-        { id: 5, name: "JavaScript", logo: "/js.png" },
-        { id: 6, name: "React JS", logo: "/atom.png" },
-        { id: 7, name: "Next JS", logo: "/Next.js.png" },
-        { id: 8, name: "Java", logo: "/javaTemp.png" },
-    ];
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/skiper-ui/skiper101";
 
-    return (
-        <div className="w-full px-4 py-16 flex flex-col border-t border-white/20">
-            <p className="text-3xl md:text-5xl font-bold text-white mb-4 text-center">
-                My Skills
-            </p>
+export const Skills = () => {
+  const [activeTechnology, setActiveTechnology] = useState<string | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
-            <div className="w-20 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
+  return (
+    <section
+      id="skills"
+      onMouseLeave={() => setActiveTechnology(null)}
+      className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-b border-theme space-y-16"
+    >
+      {/* Section Heading */}
+      <SectionHeading number="03" title="TECHNOLOGIES & TOOLS" tag="REPERTOIRE" />
 
-            <motion.div 
-                className="flex gap-6 justify-center pt-10 flex-wrap flex-col min-[300px]:flex-row w-fit mx-auto"
-                onViewportEnter={() => {
-                    if (!isFast) {
-                        setTimeout(() => setIsFast(true), 3000);
-                    }
-                }}
-            >
-                {skills.map((skill, index) => (
-                    <motion.div
-                        key={skill.id}
-                        initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}    
-                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        viewport={{ once: false, amount: 0.1,margin: "-100px" }}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {SKILLS_CATEGORIES.map((category, idx) => (
+          <Reveal key={category.title} delay={idx * 0.1} className="space-y-6 p-6 bg-theme-surface border border-theme">
+            {/* Category heading remains muted/accent and does not participate in fade */}
+            <h3 className="text-xs font-mono text-theme-muted uppercase tracking-widest border-b border-theme pb-3">
+              {category.title}
+            </h3>
+
+            <ul className="space-y-3 font-mono text-sm">
+              {category.items.map((item) => {
+                const isFocused = activeTechnology === item;
+                const isMuted = activeTechnology !== null && !isFocused;
+
+                return (
+                  <Tooltip key={item}>
+                    <TooltipTrigger asChild>
+                      <motion.li
+                        tabIndex={0}
+                        onMouseEnter={() => setActiveTechnology(item)}
+                        onFocus={() => setActiveTechnology(item)}
+                        onBlur={() => setActiveTechnology(null)}
                         animate={{
-                            opacity: activeId === null ? 1 : activeId === skill.id ? 1 : 0.4,
-                            scale: activeId === skill.id ? 1.05 : 1,
+                          opacity: isMuted ? 0.3 : 1,
+                          x: prefersReducedMotion ? 0 : isFocused ? 6 : 0,
+                          scale: prefersReducedMotion ? 1 : isFocused ? 1.02 : 1,
                         }}
-                        transition={{ 
-                            duration: isFast ? 0.3 : 0.6, 
-                            delay: isFast ? index*0.1 : index * 0.15, 
-                            type: "spring", 
-                            bounce:  0.3 
+                        transition={{
+                          duration: 0.22,
+                          ease: [0.16, 1, 0.3, 1],
                         }}
-                        className="cursor-pointer"
-                    >
-                        <CardSection                            
-                            name={skill.name}
-                            logo={skill.logo}
+                        className={`flex items-center gap-3 cursor-pointer py-1 select-none outline-none transition-colors ${
+                          isFocused ? "text-theme-main font-bold" : "text-theme-main font-normal"
+                        }`}
+                      >
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full inline-block transition-all duration-200 ${
+                            isFocused
+                              ? "bg-theme-main scale-150 shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                              : "bg-theme-subtle"
+                          }`}
                         />
-                    </motion.div>
-                ))}
-            </motion.div>
-        </div>
-    );
+                        <span className="tracking-wide">{item}</span>
+                      </motion.li>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="font-mono text-xs bg-theme-surface text-theme-main border border-theme shadow-md px-3 py-1.5">
+                      <span>{item} — Tech Stack</span>
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
+            </ul>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
 };
-
-export default Skills;

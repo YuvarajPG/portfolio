@@ -1,80 +1,146 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const MAX_NAME_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_MESSAGE_LENGTH = 5000;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    // Validate Content-Type
+    const contentType = request.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Invalid Content-Type. Expected application/json",
+        },
+        { status: 400 },
+      );
+    }
 
-    // ✅ Basic validation
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object") {
+      return NextResponse.json(
+        { success: false, error: "Invalid form data" },
+        { status: 400 },
+      );
+    }
+
+    const name = String(body.name || "").trim();
+    const email = String(body.email || "").trim();
+    const message = String(body.message || "").trim();
+
+    // Server-side validation
     if (!name || !email || !message) {
       return NextResponse.json(
-        { message: "All fields are required." },
-        { status: 400 }
+        { success: false, error: "All fields are required" },
+        { status: 400 },
       );
     }
 
-    // ✅ Ensure env variables exist
-    const SMTP_HOST = process.env.SMTP_HOST;
-    const SMTP_PORT = Number(process.env.SMTP_PORT);
-    const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS;
-    const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
-
-    if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
-      console.error("Missing SMTP environment variables");
+    if (name.length > MAX_NAME_LENGTH) {
       return NextResponse.json(
-        { message: "Server configuration error." },
-        { status: 500 }
+        {
+          success: false,
+          error: `Name cannot exceed ${MAX_NAME_LENGTH} characters`,
+        },
+        { status: 400 },
       );
     }
 
-    // ✅ Create transporter
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: SMTP_PORT === 465, // auto handle secure
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
-      },
-    });
+    if (email.length > MAX_EMAIL_LENGTH || !EMAIL_REGEX.test(email)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid email address format" },
+        { status: 400 },
+      );
+    }
 
-    // ✅ Email content
-    const mailOptions = {
-      from: `"${name} (Portfolio)" <${SMTP_USER}>`,
-      to: CONTACT_EMAIL || SMTP_USER,
+    if (message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Message cannot exceed ${MAX_MESSAGE_LENGTH} characters`,
+        },
+        { status: 400 },
+      );
+    }
+
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (!resendApiKey) {
+      console.error(
+        "[Contact API Error] Missing RESEND_API_KEY environment variable.",
+      );
+      return NextResponse.json(
+        { success: false, error: "Failed to send message" },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
+    const toEmail = process.env.CONTACT_EMAIL || "yvuvarajpg@gmail.com";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
+
+    const emailResponse = await resend.emails.send({
+      from: fromEmail,
+      to: [toEmail],
       replyTo: email,
-      subject: `New Message from ${name}`,
-      text: message,
+      subject: `New portfolio contact from ${name}`,
+      text: `Name:\n${name}\n\nEmail:\n${email}\n\nMessage:\n${message}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto;">
-          <h2 style="color: #333;">📩 New Portfolio Message</h2>
-          
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-
-          <hr style="margin: 20px 0;" />
-
-          <p><strong>Message:</strong></p>
-          <p style="white-space: pre-wrap; color: #444;">${message}</p>
+        <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+          <h2 style="color: #0f172a; font-size: 20px; font-weight: 700; margin: 0 0 16px;">New Portfolio Contact Message</h2>
+          <div style="margin-bottom: 12px;">
+            <strong style="color: #475569; font-size: 12px; text-transform: uppercase;">Name:</strong>
+            <p style="color: #0f172a; font-size: 15px; margin: 4px 0 16px 0;">${safeName}</p>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <strong style="color: #475569; font-size: 12px; text-transform: uppercase;">Email:</strong>
+            <p style="color: #0f172a; font-size: 15px; margin: 4px 0 16px 0;"><a href="mailto:${safeEmail}">${safeEmail}</a></p>
+          </div>
+          <div>
+            <strong style="color: #475569; font-size: 12px; text-transform: uppercase;">Message:</strong>
+            <p style="color: #0f172a; font-size: 15px; white-space: pre-wrap; margin: 4px 0 0 0; background: #f8fafc; padding: 16px; border-radius: 8px;">${safeMessage}</p>
+          </div>
         </div>
       `,
-    };
+    });
 
-    // ✅ Send mail
-    await transporter.sendMail(mailOptions);
+    if (emailResponse.error) {
+      console.error("[Resend Error]:", emailResponse.error);
 
-    return NextResponse.json(
-      { message: "Message sent successfully!" },
-      { status: 200 }
-    );
+      return NextResponse.json(
+        {
+          success: false,
+          error: emailResponse.error.message,
+        },
+        { status: emailResponse.error.statusCode || 500 },
+      );
+    }
 
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("[Contact API Exception]:", error);
 
     return NextResponse.json(
-      { message: "Failed to send message." },
-      { status: 500 }
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown server error",
+      },
+      { status: 500 },
     );
   }
 }
