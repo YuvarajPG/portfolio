@@ -88,7 +88,7 @@ export const PROJECTS_INDEX: ProjectItemData[] = [
     technologies: ["React JS", "TypeScript", "Tailwind CSS", "JavaScript", "LocalStorage"],
     image: "/todo_preview.png",
     githubUrl: "https://github.com/YuvarajPG/todo",
-    liveUrl: "https://todo-two-puce-47.vercel.app/"
+    liveUrl: "https://todo-yuva.vercel.app/"
   },
 ];
 

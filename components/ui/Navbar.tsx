@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { DEVELOPER_INFO } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { motion } from "framer-motion";
+import { FileText } from "lucide-react";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -57,14 +59,14 @@ export const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Name / Mark */}
-          <a
-            href="#hero"
+          <Link
+            href="/"
             className="text-sm font-bold tracking-tight text-theme-main hover:text-theme-muted transition-colors font-mono uppercase"
           >
             {DEVELOPER_INFO.name}
-          </a>
+          </Link>
 
-          {/* Navigation Links & Theme Toggle */}
+          {/* Navigation Links, Resume Button & Theme Toggle */}
           <div className="flex items-center gap-4 sm:gap-6">
             <nav className="hidden md:flex items-center gap-5 sm:gap-6 text-xs font-mono tracking-wider text-theme-muted">
               {navItems.map((item) => {
@@ -72,7 +74,7 @@ export const Navbar = () => {
                 return (
                   <a
                     key={item.id}
-                    href={`#${item.id}`}
+                    href={`/#${item.id}`}
                     className={`relative py-1 transition-colors uppercase ${
                       isActive ? "text-theme-main font-semibold" : "hover:text-theme-main"
                     }`}
@@ -89,6 +91,14 @@ export const Navbar = () => {
                 );
               })}
             </nav>
+
+            <Link
+              href="/resume"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono border border-theme bg-theme-surface hover:bg-theme-main hover:text-theme-bg transition-colors duration-200 text-theme-main rounded-lg uppercase tracking-wider"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume</span>
+            </Link>
 
             <ThemeToggle />
           </div>
