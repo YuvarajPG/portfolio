@@ -6,7 +6,12 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { motion } from "framer-motion";
 
-export const Navbar = () => {
+interface NavbarProps {
+  onOpenResume?: () => void;
+  isResumeMode?: boolean;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, isResumeMode = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
@@ -66,29 +71,38 @@ export const Navbar = () => {
 
           {/* Navigation Links & Theme Toggle */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <nav className="hidden md:flex items-center gap-5 sm:gap-6 text-xs font-mono tracking-wider text-theme-muted">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className={`relative py-1 transition-colors uppercase ${
-                      isActive ? "text-theme-main font-semibold" : "hover:text-theme-main"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && (
-                      <motion.span
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-theme-main"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </a>
-                );
-              })}
-            </nav>
+            {!isResumeMode && (
+              <nav className="hidden md:flex items-center gap-5 sm:gap-6 text-xs font-mono tracking-wider text-theme-muted">
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      className={`relative py-1 transition-colors uppercase ${
+                        isActive ? "text-theme-main font-semibold" : "hover:text-theme-main"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      {isActive && (
+                        <motion.span
+                          layoutId="activeNavIndicator"
+                          className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-theme-main"
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </a>
+                  );
+                })}
+              </nav>
+            )}
+
+            <button
+              onClick={onOpenResume}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono border border-theme bg-theme-surface hover:bg-theme-main hover:text-theme-bg transition-colors duration-200 text-theme-main rounded-lg uppercase tracking-wider cursor-pointer"
+            >
+              <span>Resume</span>
+            </button>
 
             <ThemeToggle />
           </div>

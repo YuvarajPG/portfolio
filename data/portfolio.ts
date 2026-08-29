@@ -9,6 +9,7 @@ export interface ProjectItemData {
   image: string;
   githubUrl: string;
   liveUrl: string;
+  status?: string;
 }
 
 export const DEVELOPER_INFO = {
@@ -71,25 +72,39 @@ export const PROJECTS_INDEX: ProjectItemData[] = [
     number: "01",
     id: "portfolio",
     title: "Portfolio Website",
-    year: "2024",
+    year: "2026",
     category: "Web Engineering",
     summary: "A personal developer portfolio built with Next.js, React, TypeScript, and Framer Motion featuring custom dark/light theme switching.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     image: "/portfolio.png",
     githubUrl: "https://github.com/YuvarajPG/portfolio",
     liveUrl: "#hero"
-  },{
+  },
+  {
     number: "02",
     id: "todo-app",
     title: "Todo App",
-    year: "2024",
+    year: "2025",
     category: "Frontend Application",
     summary: "A task management web application built with React and Tailwind CSS featuring task state persistence and interactive filtering.",
     technologies: ["React JS", "TypeScript", "Tailwind CSS", "JavaScript", "LocalStorage"],
     image: "/todo_preview.png",
     githubUrl: "https://github.com/YuvarajPG/todo",
-    liveUrl: "https://todo-two-puce-47.vercel.app/"
+    liveUrl: "https://todo-yuva.vercel.app/"
   },
+  {
+    number: "03",
+    id: "inventory-management-system",
+    title: "Inventory Management System",
+    year: "2026",
+    category: "Full-Stack Application",
+    summary: "A comprehensive full-stack inventory management system for tracking products, stock levels, pricing, and automated inventory operations.",
+    technologies: ["TypeScript", "React JS", "REST APIs", "Tailwind CSS", "Express.js", "Node.js"],
+    image: "/IMS.png",
+    githubUrl: "https://github.com/YuvarajPG/Inventory-Managent-System",
+    liveUrl: "https://inventory-managent-system-seven.vercel.app/",
+    status: "on going"
+  }
 ];
 
 export const SKILLS_CATEGORIES = [

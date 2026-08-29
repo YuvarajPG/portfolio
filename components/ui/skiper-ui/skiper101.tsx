@@ -1,88 +1,73 @@
 "use client";
 
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import * as React from "react";
-
+import React from "react";
 import { cn } from "@/lib/utils";
 
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delayDuration={delayDuration}
-      {...props}
-    />
-  );
+const TooltipContext = React.createContext<{ open: boolean; setOpen: (open: boolean) => void }>({
+  open: false,
+  setOpen: () => {},
+});
+
+function TooltipProvider({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
 
-const Skiper102 = () => {
+function Tooltip({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = React.useState(false);
   return (
-    <div className="flex flex-col">
-      <div className="-mt-36 mb-36 grid content-start justify-items-center gap-6 text-center">
-        <span className="after:to-foreground relative max-w-[14ch] text-xs uppercase leading-tight opacity-40 after:absolute after:left-1/2 after:top-full after:h-16 after:w-px after:bg-gradient-to-b after:from-transparent after:content-['']">
-          Hover to see border arrow tooltip
-        </span>
+    <TooltipContext.Provider value={{ open, setOpen }}>
+      <div className="relative inline-block" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        {children}
       </div>
-      <Tooltip>
-        <TooltipTrigger>
-          <div>
-            <p>Tooltip</p>
-          </div>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Tooltip Content</p>
-        </TooltipContent>
-      </Tooltip>
-    </div>
-  );
-};
-
-function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
+    </TooltipContext.Provider>
   );
 }
 
 function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
+  children,
+  asChild,
+  className = "",
+}: {
+  children: React.ReactNode;
+  asChild?: boolean;
+  className?: string;
+}) {
+  return <div className={className}>{children}</div>;
 }
 
 function TooltipContent({
-  className,
-  sideOffset = 0,
+  className = "",
   children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  side = "top",
+}: {
+  className?: string;
+  children: React.ReactNode;
+  side?: "top" | "right" | "bottom" | "left";
+}) {
+  const { open } = React.useContext(TooltipContext);
+  if (!open) return null;
+
+  const sideClasses = {
+    top: "bottom-full left-1/2 -translate-x-1/2 mb-2.5",
+    bottom: "top-full left-1/2 -translate-x-1/2 mt-2.5",
+    right: "left-full top-1/2 -translate-y-1/2 ml-2.5",
+    left: "right-full top-1/2 -translate-y-1/2 mr-2.5",
+  };
+
   return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={cn(
-          "origin-(--radix-tooltip-content-transform-origin) animate-in bg-background text-foreground outline-border fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 group z-50 w-fit text-balance rounded-md px-3 py-1.5 text-xs outline-1",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow asChild>
-          <span>
-            <ArrowSvg />
-          </span>
-        </TooltipPrimitive.Arrow>
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
+    <div
+      className={cn(
+        "absolute z-100 pointer-events-none whitespace-nowrap rounded-lg px-3 py-1.5 text-xs shadow-2xl bg-theme-surface text-theme-main border border-theme animate-in fade-in-0 zoom-in-95",
+        sideClasses[side] || sideClasses.top,
+        className
+      )}
+    >
+      {children}
+    </div>
   );
 }
+
+const Skiper102 = () => null;
 
 export { Skiper102, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };
 

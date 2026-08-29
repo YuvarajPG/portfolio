@@ -45,9 +45,10 @@
     color: var(--background);
   }
 
-  /* Custom subtle scrollbar */
+  /* Custom scrollbar matching website theme */
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -56,6 +57,18 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--border);
+    border-radius: 9999px;
+    transition: background-color 300ms ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+  }
+
+  /* Firefox scrollbar support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--background);
   }
 }
 

@@ -97,8 +97,8 @@ export function Skiper8({ onComplete, duration = 1400 }: Skiper8Props) {
     // 4. Counter animation
     const startTime = performance.now();
     const animateCounter = (now: number) => {
-      const elapsed = now - startTime;
-      const pct = Math.min(Math.floor((elapsed / (duration * 0.7)) * 100), 100);
+      const elapsed = Math.max(0, now - startTime);
+      const pct = Math.max(0, Math.min(Math.floor((elapsed / (duration * 0.7)) * 100), 100));
       setProgress(pct);
 
       if (pct < 100) {
@@ -108,7 +108,7 @@ export function Skiper8({ onComplete, duration = 1400 }: Skiper8Props) {
     const animId = requestAnimationFrame(animateCounter);
 
     // 5. Complete timer (including panel exit transition)
-    const exitDuration = 900; // 0.1s delay + 0.8s slide transition
+    const exitDuration = 500; // 0.05s delay + 0.45s slide transition
     const totalDuration = duration + exitDuration;
 
     const timer = setTimeout(() => {
@@ -130,7 +130,7 @@ export function Skiper8({ onComplete, duration = 1400 }: Skiper8Props) {
         <motion.div
           key="skiper8-preloader"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 0.8 }}
+          transition={{ duration: 0.2, delay: 0.4 }}
           className="fixed inset-0 z-100 pointer-events-auto flex flex-col overflow-hidden select-none touch-none"
         >
           {/* Top Panel */}
@@ -138,8 +138,8 @@ export function Skiper8({ onComplete, duration = 1400 }: Skiper8Props) {
             initial={{ y: "0%" }}
             exit={{ y: "-100%" }}
             transition={{
-              duration: 0.8,
-              delay: 0.1,
+              duration: 0.45,
+              delay: 0.05,
               ease: [0.76, 0, 0.24, 1],
             }}
             className="w-full h-1/2 bg-theme border-b border-theme/40 relative flex items-end justify-between px-8 sm:px-16 pb-6 shadow-2xl"
@@ -157,8 +157,8 @@ export function Skiper8({ onComplete, duration = 1400 }: Skiper8Props) {
             initial={{ y: "0%" }}
             exit={{ y: "100%" }}
             transition={{
-              duration: 0.8,
-              delay: 0.1,
+              duration: 0.45,
+              delay: 0.05,
               ease: [0.76, 0, 0.24, 1],
             }}
             className="w-full h-1/2 bg-theme relative flex items-start justify-between px-8 sm:px-16 pt-6 shadow-2xl"

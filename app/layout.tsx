@@ -4,8 +4,6 @@ import { PageLoader } from "@/components/PageLoader";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { TooltipProvider } from "@/components/ui/skiper-ui/skiper101";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
 export const metadata = {
@@ -43,9 +41,9 @@ export const metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/portfolio_icon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/fav_icon.png" type="image/x-icon" />
         <Script
           id="theme-initializer"
           strategy="beforeInteractive"
@@ -72,11 +70,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <ThemeProvider>
           <TooltipProvider>
             <PageLoader />
-            <Navbar />
             <main className="relative z-10">{children}</main>
             <Footer />
-            <SpeedInsights />
-            <Analytics />
           </TooltipProvider>
         </ThemeProvider>
       </body>

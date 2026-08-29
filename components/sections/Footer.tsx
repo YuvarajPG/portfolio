@@ -26,7 +26,7 @@ export const Footer = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="flex items-center gap-2 text-theme-muted hover:text-theme-main transition-colors cursor-pointer uppercase"
+          className="flex items-center mt-2 sm:mt-0  gap-2 text-theme-muted hover:text-theme-main transition-colors cursor-pointer uppercase"
         >
           <span>TOP</span>
           <ArrowUp className="w-3.5 h-3.5" />
