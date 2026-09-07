@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(resendApiKey);
-    const toEmail = process.env.CONTACT_EMAIL || "yvuvarajpg@gmail.com";
+    const toEmail = process.env.CONTACT_EMAIL || "yvuarajpg@gmail.com";
     const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
     const safeName = escapeHtml(name);
