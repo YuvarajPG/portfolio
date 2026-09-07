@@ -31,7 +31,7 @@ export const DEVELOPER_INFO = {
   socials: {
     github: "https://github.com/YuvarajPG",
     linkedin: "https://www.linkedin.com/in/yuvarajpg",
-    email: "yvuvarajpg@gmail.com",
+    email: "yvuarajpg@gmail.com",
     resume: "/Yuvaraj P G Resume -- new style.pdf",
     locationMap: "https://www.google.com/maps/place/Salem,+Tamil+Nadu"
   }
