@@ -100,10 +100,10 @@ export const PROJECTS_INDEX: ProjectItemData[] = [
     category: "Full-Stack Application",
     summary: "A comprehensive full-stack inventory management system for tracking products, stock levels, pricing, and automated inventory operations.",
     technologies: ["TypeScript", "React JS", "REST APIs", "Tailwind CSS", "Express.js", "Node.js"],
-    image: "/IMS.png",
+    image: "/ims.png",
     githubUrl: "https://github.com/YuvarajPG/Inventory-Managent-System",
-    liveUrl: "https://inventory-managent-system-seven.vercel.app/",
-    status: "on going"
+    liveUrl: "https://inventory-managent-system-seven.vercel.app/"
+    // status: "on going"
   }
 ];
 
