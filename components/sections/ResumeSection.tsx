@@ -291,8 +291,8 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onBackToPortfolio 
                   <Image
                     src="/resume-preview-1.png"
                     alt={`${DEVELOPER_INFO.name} Resume`}
-                    width={1700}
-                    height={2400}
+                    width={2068}
+                    height={2925}
                     priority
                     className="w-full h-auto block select-none"
                   />
